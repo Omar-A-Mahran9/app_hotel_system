@@ -1,0 +1,2 @@
+/* Camera permission prompt (identity verification). */
+"NSCameraUsageDescription" = "The camera is used to photograph your ID and take a live selfie to verify your identity before check-in.";

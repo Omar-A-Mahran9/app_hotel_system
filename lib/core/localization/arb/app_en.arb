@@ -1,0 +1,1333 @@
+{
+  "@@locale": "en",
+
+  "appName": "Hotel System",
+  "@appName": { "description": "Product name shown in the app bar and app metadata." },
+
+  "appTagline": "Book, verify and enter — from your phone.",
+  "@appTagline": { "description": "One-line promise shown on the foundation screen." },
+
+  "foundationScreenTitle": "Foundation & Design System",
+  "@foundationScreenTitle": { "description": "Title of the Phase 0 placeholder screen." },
+
+  "foundationScreenSubtitle": "Mobile Phase 0 — architecture, theme, localization and data-layer scaffolding only. Feature screens arrive in later phases.",
+
+  "sectionLanguage": "Language",
+  "sectionTheme": "Appearance",
+  "sectionBackendStatus": "Backend connectivity",
+  "sectionComponents": "Design system components",
+
+  "languageEnglish": "English",
+  "languageArabic": "العربية",
+
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+
+  "environmentLabel": "Environment: {name}",
+  "@environmentLabel": {
+    "placeholders": { "name": { "type": "String" } }
+  },
+
+  "apiBaseUrlLabel": "API base URL: {url}",
+  "@apiBaseUrlLabel": {
+    "placeholders": { "url": { "type": "String" } }
+  },
+
+  "backendStatusOk": "Reachable",
+  "backendStatusDegraded": "Degraded",
+  "backendStatusDown": "Unreachable",
+  "backendStatusCheckedAt": "Checked at {time}",
+  "@backendStatusCheckedAt": {
+    "placeholders": { "time": { "type": "String" } }
+  },
+
+  "actionRetry": "Retry",
+  "actionCheckAgain": "Check again",
+  "actionPrimaryExample": "Primary action",
+  "actionSecondaryExample": "Secondary action",
+
+  "stateLoadingTitle": "Loading…",
+  "stateEmptyTitle": "Nothing here yet",
+  "stateEmptySubtitle": "When there is something to show, it will appear here.",
+  "stateErrorTitle": "Something went wrong",
+  "notificationsTitle": "Notifications",
+  "notificationsUnreadTitle": "{count, plural, =1{You have 1 new notification} other{You have {count} new notifications}}",
+  "@notificationsUnreadTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationsAllReadTitle": "You're all caught up",
+  "notificationsBannerBody": "Tap any notification to go straight to it.",
+  "notificationsEmptyTitle": "No notifications yet",
+  "notificationsEmptyBody": "Updates about your bookings and stays will appear here.",
+  "notificationsNow": "Now",
+  "notificationsYesterday": "Yesterday",
+  "notificationsUnreadLabel": "Unread",
+  "notificationsMarkAllRead": "Mark all as read",
+  "notificationsOpenTooltip": "Notifications",
+  "errorGeneric": "We could not complete that request. Please try again.",
+  "errorNetwork": "You appear to be offline. Check your connection and try again.",
+  "errorTimeout": "The request took too long. Please try again.",
+  "errorUnauthorized": "Your session has expired. Please sign in again.",
+  "errorServer": "The service is temporarily unavailable. Please try again later.",
+  "errorNotImplemented": "This isn't available yet. Please try again later.",
+
+  "textFieldExampleLabel": "Full name",
+  "textFieldExampleHint": "Enter your name",
+
+  "brandWordmark": "Hotel System",
+  "@brandWordmark": { "description": "Latin brand wordmark under the logo on the splash — the v2 Figma shows it untranslated in both languages." },
+  "entryHeadline": "Explore Al Waha Hotel and book from wherever you are",
+  "@entryHeadline": { "description": "Onboarding headline (v2 ENTRY_Onboarding). EN is a translation of the Figma AR copy — pending designer review." },
+  "entrySubtext": "Simply pick your favourite room at the time that suits you",
+  "entryStartAction": "Start now",
+  "entryLanguageSwitchLabel": "Language",
+
+  "languageScreenHeading": "Choose the app language",
+
+  "authPhoneTitle": "Sign in",
+  "authPhoneHeading": "Enter your mobile number",
+  "authPhoneBody": "We use it to confirm your booking and send your room entry code. We will not use it for anything else.",
+  "authPhoneFieldLabel": "Mobile number",
+  "authPhoneFieldHint": "05 1234 5678",
+  "authPhoneHelper": "We will send a verification code to this number",
+  "authPhoneTerms": "By continuing you agree to the Terms and the Privacy Policy.",
+  "authPhoneSubmit": "Send verification code",
+  "authPhoneInvalid": "Enter a Saudi mobile number starting with 05 (10 digits)",
+
+  "authOtpTitle": "Verification code",
+  "authOtpHeading": "Enter the code we sent",
+  "authOtpChange": "Change",
+  "authOtpResendCountdown": "Resend in {time}",
+  "@authOtpResendCountdown": {
+    "placeholders": { "time": { "type": "String" } }
+  },
+  "authOtpResendAction": "Resend the code",
+  "authOtpSubmit": "Confirm",
+  "authOtpInvalidFormat": "Enter the {length}-digit code",
+  "@authOtpInvalidFormat": {
+    "placeholders": { "length": { "type": "int" } }
+  },
+  "authOtpErrorTitle": "Incorrect code",
+  "authOtpErrorBody": "Attempts remaining: {count}. Use the most recent code — earlier codes stop working as soon as a new one is sent.",
+  "@authOtpErrorBody": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "authOtpRetry": "Try again",
+  "authOtpChangeNumber": "Change mobile number",
+  "authOtpLockedTitle": "Too many attempts",
+  "authOtpLockedBody": "For your security we stopped accepting codes. Request a new code to continue.",
+
+  "authProfileTitle": "Complete your details",
+  "authProfileBannerTitle": "Write your name exactly as it appears on your ID",
+  "authProfileBannerBody": "The system matches your name against your ID during verification. Any difference may delay your check-in.",
+  "authProfileNameLabel": "Full name",
+  "authProfileNameHint": "Mahmoud Nabil",
+  "authProfileEmailLabel": "Email",
+  "authProfileEmailHint": "name@example.com",
+  "authProfileSubmit": "Save and continue",
+  "authProfileNameInvalid": "Enter your full name",
+  "authProfileEmailInvalid": "Enter a valid email address",
+
+  "authSessionExpiredTitle": "Session ended",
+  "authSessionExpiredBannerTitle": "Your session has ended",
+  "authSessionExpiredBannerBody": "Your booking is saved and was not cancelled. Sign in again and we will take you back to where you left off.",
+  "authSessionExpiredSubmit": "Sign in",
+
+  "authSignOut": "Sign out",
+  "authDemoHint": "Development build: the verification code is {code}.",
+  "@authDemoHint": {
+    "placeholders": { "code": { "type": "String" } }
+  },
+
+  "commonApply": "Apply",
+  "commonCancel": "Cancel",
+  "commonReset": "Reset",
+  "commonClear": "Clear",
+  "commonSeeAll": "See all",
+  "commonBack": "Back",
+
+  "navHome": "Home",
+  "navBookings": "My bookings",
+  "navServices": "Services",
+  "navAccount": "Account",
+  "navComingSoon": "This section is coming in a later update.",
+  "@navComingSoon": { "description": "Snackbar shown when a not-yet-built bottom-nav tab is tapped." },
+
+  "discoverGreeting": "Welcome",
+  "discoverGreetingNamed": "Welcome, {name}",
+  "@discoverGreetingNamed": {
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "discoverSubtitle": "Discover the group's hotels",
+  "discoverSearchHint": "Search for a hotel or city",
+  "discoverNotificationsTooltip": "Notifications",
+  "discoverFeaturedSection": "Group hotels",
+  "discoverExploreRooms": "Explore rooms",
+  "discoverUpcomingStay": "Your upcoming stay",
+  "discoverUpcomingStayAction": "View booking",
+  "@discoverUpcomingStayAction": { "description": "Button on the Home next-stay card (v2 Frame 38 layout; that frame shows the current-stay \"extend\" action)." },
+  "discoverExploreHotels": "Explore the group's hotels",
+  "@discoverExploreHotels": { "description": "Home section title above the hotel cards (v2 HOME_Default explore header); tapping it opens search." },
+  "discoverSubtitleHotel": "Discover {hotel}",
+  "@discoverSubtitleHotel": {
+    "placeholders": { "hotel": { "type": "String" } }
+  },
+  "discoverEmptyTitle": "No hotels to show yet",
+  "discoverEmptyBody": "The group's hotels will appear here once they are published.",
+
+  "searchTitle": "Search",
+  "searchClearTooltip": "Clear search",
+  "searchResultsCount": "{count, plural, =0{No hotels available} =1{1 hotel available} other{{count} hotels available}}",
+  "@searchResultsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "searchNoResultsTitle": "No hotels match your search",
+  "searchNoResultsBody": "Try a different city or clear your filters.",
+  "searchClearFilters": "Clear filters",
+
+  "sortRecommended": "Recommended",
+  "sortTopRated": "Top rated",
+  "sortLowestPrice": "Best value",
+  "sortTitle": "Sort results",
+  "sortHint": "The order stays until you change it or search again.",
+  "sortApply": "Apply sort",
+  "sortActiveTag": "on",
+
+  "filterTitle": "Filter results",
+  "filterMatchCount": "{count, plural, =0{No matching hotels} =1{1 matching hotel} other{{count} matching hotels}}",
+  "@filterMatchCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "filterHint": "Adjust the criteria to narrow the results.",
+  "filterCityLabel": "City",
+  "filterValueAll": "All",
+  "filterSelectedCount": "{count} selected",
+  "@filterSelectedCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "filterPriceLabel": "Price range",
+  "filterFacilitiesLabel": "Facilities",
+  "filterRatingLabel": "Rating",
+  "filterApply": "Apply filter",
+  "filterClearAll": "Clear all",
+  "filterCityPickerTitle": "City",
+  "filterCityPickerHint": "You can choose more than one city. Results update when you apply.",
+
+  "cityHotelCount": "{count, plural, =1{1 hotel} other{{count} hotels}}",
+  "@cityHotelCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "priceRangeValue": "SAR {min} – SAR {max}",
+  "@priceRangeValue": {
+    "placeholders": {
+      "min": { "type": "int" },
+      "max": { "type": "int" }
+    }
+  },
+  "priceFrom": "from SAR {amount}",
+  "@priceFrom": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "pricePerNight": "SAR {amount} / night",
+  "@pricePerNight": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "priceStayTotal": "SAR {amount} total",
+  "@priceStayTotal": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "priceFromLabel": "from",
+  "priceNightSuffix": "/ night",
+  "priceTotalSuffix": "total",
+
+  "hotelRatingValue": "{rating}",
+  "@hotelRatingValue": {
+    "placeholders": {
+      "rating": { "type": "double", "format": "decimalPattern" }
+    }
+  },
+  "hotelReviewCount": "{count, plural, =1{1 review} other{{count} reviews}}",
+  "@hotelReviewCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "hotelAvailable": "Available",
+  "hotelUnavailable": "Not available right now",
+  "hotelDetailAmenities": "Services & facilities",
+  "hotelRoomTypeCount": "{count, plural, =1{1 room type} other{{count} room types}}",
+  "@hotelRoomTypeCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "hotelPhotoCount": "{count, plural, other{+{count}}}",
+  "@hotelPhotoCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "hotelSelectDates": "Select dates",
+  "hotelBookNow": "Book now",
+  "hotelGuestCount": "{count, plural, =1{1 guest} other{{count} guests}}",
+  "@hotelGuestCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "roomAreaSqm": "{area} m²",
+  "@roomAreaSqm": {
+    "placeholders": { "area": { "type": "int" } }
+  },
+
+  "amenityFreeWifi": "Free Wi-Fi",
+  "amenityBreakfast": "Breakfast",
+  "amenityParking": "Parking",
+  "amenityPool": "Pool",
+  "amenityGym": "Gym",
+  "amenityFamilyRooms": "Family rooms",
+  "amenityAirportShuttle": "Airport shuttle",
+  "amenityRoomService": "Room service",
+  "amenityAirConditioning": "Air conditioning",
+  "amenityCityView": "City view",
+  "amenityBalcony": "Balcony",
+  "amenityKitchenette": "Kitchenette",
+
+  "stayDatesTitle": "Choose your stay dates",
+  "stayDatesCheckIn": "Check-in",
+  "stayDatesCheckOut": "Check-out",
+  "stayDatesPick": "Choose date",
+  "stayDatesClear": "Clear dates",
+  "stayDatesShowRooms": "Show available rooms",
+  "stayNights": "{count, plural, =1{1 night} other{{count} nights}}",
+  "@stayNights": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "stayDatesErrorCheckoutBeforeCheckin": "Check-out must be after check-in",
+  "stayDatesErrorPast": "Choose a date from today onwards",
+  "stayDatesEditDates": "Edit dates",
+
+  "guestsTitle": "Number of guests",
+  "guestsAdults": "Adults",
+  "guestsChildren": "Children",
+  "guestsConfirm": "Confirm guests",
+  "stepperDecrease": "Decrease",
+  "stepperIncrease": "Increase",
+  "guestsAdultsCount": "{count, plural, =1{1 adult} other{{count} adults}}",
+  "@guestsAdultsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "guestsChildrenCount": "{count, plural, =1{1 child} other{{count} children}}",
+  "@guestsChildrenCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "roomsTitle": "Available rooms",
+  "roomsAvailableCount": "{count, plural, =0{No rooms available} =1{1 room available} other{{count} rooms available}}",
+  "@roomsAvailableCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "roomsSortLabel": "Sort",
+  "roomsSortLowest": "Lowest price",
+  "roomsSortHighest": "Highest price",
+  "roomOccupancy": "{count, plural, =1{1 guest} other{{count} guests}}",
+  "@roomOccupancy": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "roomBreakfastIncluded": "Breakfast included",
+  "roomFreeCancellation": "Free cancellation",
+  "roomNonRefundable": "Non-refundable",
+  "roomSoldOut": "Not available for these dates",
+  "roomsAllSoldOutTitle": "All rooms are sold out for these dates",
+  "roomsAllSoldOutBody": "Try different dates and we will show the rooms that open up.",
+  "roomsNoResultsTitle": "No rooms for these dates",
+  "roomsNoResultsBody": "Try different dates or adjust the number of guests.",
+  "roomsChangeDates": "Change dates",
+  "roomsChangeGuests": "Change guests",
+
+  "commonContinue": "Continue",
+  "commonClose": "Close",
+  "commonEdit": "Edit",
+
+  "calendarWeekdays": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+  "@calendarWeekdays": {
+    "description": "Seven short weekday names, Sunday first, comma-separated."
+  },
+
+  "stayDatesSelectedRange": "{checkIn} – {checkOut}",
+  "@stayDatesSelectedRange": {
+    "description": "Selected check-in – check-out summary; dates are pre-formatted.",
+    "placeholders": {
+      "checkIn": { "type": "String" },
+      "checkOut": { "type": "String" }
+    }
+  },
+  "stayDatesHintPickCheckIn": "Choose your check-in date to start",
+  "stayDatesHintPickCheckOut": "{checkIn} · choose your check-out date",
+  "@stayDatesHintPickCheckOut": {
+    "placeholders": { "checkIn": { "type": "String" } }
+  },
+  "stayDatesFieldPlaceholder": "Choose date",
+
+  "roomSelect": "Select",
+  "roomSelected": "Selected",
+  "roomViewDetails": "View details",
+  "roomDetailsTitle": "Room details",
+  "roomBedType": "Bed",
+  "roomCapacityLabel": "Sleeps",
+  "roomPolicyLabel": "Cancellation",
+  "roomPolicyRefundable": "Free cancellation with a full refund within {hours} hours of booking, or until check-in if sooner.",
+  "@roomPolicyRefundable": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "roomPolicyRefundableShort": "Free cancellation available",
+  "roomPolicyNonRefundable": "Non-refundable",
+  "roomSelectThisRoom": "Select this room",
+  "roomRemoveSelection": "Remove selection",
+  "roomStayTotalLabel": "total for {nights, plural, =1{1 night} other{{nights} nights}}",
+  "@roomStayTotalLabel": {
+    "placeholders": { "nights": { "type": "int" } }
+  },
+  "roomCardPerNight": "/ night",
+  "roomCardFreeCancellation": "Free cancellation",
+  "stayGuestsCount": "{count, plural, =1{1 guest} other{{count} guests}}",
+  "@stayGuestsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "roomDetailAmenitiesHeading": "Room facilities",
+  "roomDetailCancellationHeading": "Cancellation policy",
+  "roomDetailStayHeading": "Your stay",
+  "roomSortTitle": "Sort rooms",
+  "roomSortApply": "Apply sort",
+  "roomSortActiveTag": "on",
+  "roomsSortTrigger": "Sort: {label}",
+  "@roomsSortTrigger": {
+    "placeholders": { "label": { "type": "String" } }
+  },
+
+  "roomsContinue": "Continue",
+  "roomFilterWifi": "Wi-Fi",
+  "roomsFilterCta": "Filter",
+  "roomsNoFilterMatch": "No rooms match these filters",
+  "roomFilterTitle": "Filter rooms",
+  "roomFilterCancellation": "Cancellation policy",
+  "roomFilterFreeCancellation": "Free cancellation",
+  "roomFilterMeals": "Meals",
+  "roomFilterBreakfast": "Breakfast included",
+  "roomFilterFeatures": "Features",
+  "roomFilterReset": "Reset",
+  "roomFilterShowResults": "Show results",
+  "roomsSelectPrompt": "Select a room to continue",
+  "roomsSelectionClearedNotice": "Your room selection was cleared because the stay details changed. Choose a room again.",
+
+  "reviewTitle": "Review your selection",
+  "reviewNotBookedNotice": "Nothing is booked yet. You can still change your dates, guests or room before the reservation step.",
+  "reviewHotelLabel": "Hotel",
+  "reviewRoomLabel": "Room",
+  "reviewStayLabel": "Stay",
+  "reviewGuestsLabel": "Guests",
+  "reviewCheckInLabel": "Check-in",
+  "reviewCheckOutLabel": "Check-out",
+  "reviewPriceLabel": "Price",
+  "reviewTotalLabel": "Total for {nights, plural, =1{1 night} other{{nights} nights}}",
+  "@reviewTotalLabel": {
+    "placeholders": { "nights": { "type": "int" } }
+  },
+  "reviewChangeSelection": "Change selection",
+  "reviewNoSelectionTitle": "No room selected",
+  "reviewNoSelectionBody": "Go back and choose a room to see your selection here.",
+  "reviewBackToRooms": "Back to rooms",
+  "reviewSignInToConfirm": "Sign in to confirm",
+  "@reviewSignInToConfirm": { "description": "Primary CTA on the review screen for a guest who has not signed in yet." },
+  "reviewSignInHint": "You'll need an account to confirm this booking. Browsing stays free.",
+  "@reviewSignInHint": { "description": "Helper line under the review summary explaining why sign-in is required at this step." },
+  "bookingDetailsTitle": "Booking details",
+  "bookingDatesLabel": "Stay dates",
+  "bookingRoomSubtotal": "Stay subtotal",
+  "bookingServiceFee": "Service fee",
+  "bookingTotal": "Total",
+  "bookingProceedToPayment": "Proceed to payment",
+  "bookingRoomAvailable": "Available",
+
+  "reservationConfirmCta": "Confirm reservation",
+  "reservationConfirming": "Confirming…",
+  "reservationConfirmHint": "By confirming, you request this room for the dates above. Nothing is charged yet.",
+  "reservationCreateFailedTitle": "We couldn't confirm your reservation",
+
+  "reservationStatusFieldLabel": "Status",
+
+  "reservationStatusPending": "Pending",
+  "reservationStatusConfirmed": "Confirmed",
+  "@reservationStatusConfirmed": {
+    "description": "Guest-facing umbrella label for a secured booking (design-system content/status/confirmed). ReservationStatus itself has no `confirmed` member; used on the confirmation screen and future Bookings-list filter."
+  },
+  "reservationStatusDepositHeld": "Deposit held",
+  "reservationStatusVerified": "Verified",
+  "reservationStatusCheckedIn": "Checked in",
+  "reservationStatusInStay": "In stay",
+  "reservationStatusCheckoutInProgress": "Checkout in progress",
+  "reservationStatusCheckoutBlocked": "Checkout on hold",
+  "reservationStatusCheckedOut": "Checked out",
+  "reservationStatusInvoiced": "Invoiced",
+  "reservationStatusCancelled": "Cancelled",
+
+  "moneyAmount": "{currency} {amount}",
+  "@moneyAmount": {
+    "description": "A currency amount, e.g. 'SAR 900'.",
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+
+  "paymentReviewTitle": "Payment",
+  "paymentProcessingTitle": "Processing payment",
+  "paymentResultTitle": "Payment",
+  "paymentReservationLabel": "Reservation",
+  "paymentStatusFieldLabel": "Payment status",
+  "paymentPayNowCta": "Pay now",
+  "paymentHoldExplainer": "A refundable deposit hold is placed for your stay. Nothing is charged now.",
+  "paymentProcessingBody": "Confirming your payment…",
+  "paymentDoNotClose": "Please keep this screen open.",
+  "paymentAlreadyHeldTitle": "Deposit already held",
+  "paymentAlreadyHeldBody": "The deposit hold for this reservation is already in place.",
+  "paymentSuccessTitle": "Deposit hold confirmed",
+  "paymentNotRequiredTitle": "Your booking is confirmed",
+  "paymentNotRequiredBody": "This hotel takes no deposit. Your stay starts at check-in.",
+  "paymentSuccessBody": "Your deposit is secured. You can continue with identity verification.",
+  "paymentPendingTitle": "Payment is processing",
+  "paymentPendingBody": "Your bank hasn't confirmed the hold yet. You can check the status again shortly.",
+  "paymentFailedTitle": "Payment didn't go through",
+  "paymentFailedBody": "No money was taken. You can try again.",
+  "paymentCancelledTitle": "Payment cancelled",
+  "paymentExpiredTitle": "Payment hold expired",
+  "paymentRetryCta": "Try again",
+  "paymentBackToReservation": "Back to reservation",
+  "paymentUnavailableTitle": "Payment is unavailable",
+
+  "paymentStatusNotStarted": "Not started",
+  "paymentStatusHoldRequested": "Authorizing",
+  "paymentStatusHoldActive": "Deposit held",
+  "paymentStatusHoldFailed": "Failed",
+  "paymentStatusCaptureRequested": "Charging",
+  "paymentStatusCaptured": "Charged",
+  "paymentStatusCaptureFailed": "Charge failed",
+  "paymentStatusFinalSettlementRequested": "Settling",
+  "paymentStatusSettled": "Settled",
+  "paymentStatusSettlementFailed": "Settlement failed",
+  "paymentStatusCancelled": "Cancelled",
+  "paymentStatusExpired": "Expired",
+  "paymentStatusRefundRequested": "Refund pending",
+  "paymentStatusRefunded": "Refunded",
+  "paymentStatusRefundFailed": "Refund failed",
+
+  "paymentMethodTitle": "Payment method",
+  "paymentMethodBannerTitle": "Choose a payment method",
+  "paymentMethodBannerBody": "The deposit hold is placed without a fee and released after check-out, unless extra charges are recorded.",
+  "paymentMethodApplePay": "Apple Pay",
+  "paymentMethodSavedCard": "Card or debit card",
+  "paymentMethodAddNewCard": "Add a new card",
+  "paymentHoldNotice": "The deposit is held, not charged, until check-in",
+  "paymentCardDetailsTitle": "Payment",
+  "paymentCardDepositLabel": "Deposit amount",
+  "paymentCardNumberLabel": "Card number",
+  "paymentCardNumberHint": "4242 4242 4242 4242",
+  "paymentCardholderNameLabel": "Name on card",
+  "paymentCardNotStoredNote": "Your card details are not stored in the system.",
+  "paymentConfirmCta": "Confirm payment",
+
+  "identityVerificationTitle": "Identity verification",
+  "identityVerificationResultTitle": "Identity verification",
+  "identityVerifyCta": "Verify identity",
+  "identityStepDocument": "Document",
+  "identityStepSelfie": "Selfie",
+  "identityStepResult": "Result",
+  "identityDocumentStepTitle": "Upload your ID document",
+  "identityDocumentStepBody": "Use your passport, national ID or residence permit. Make sure the whole document is visible and readable.",
+  "identityDocumentTypePassport": "Passport",
+  "identityDocumentTypeNationalId": "National ID",
+  "identityDocumentTypeResidencePermit": "Residence permit",
+  "identityDocumentTypeLabel": "Document type",
+  "identityDocumentCaptureCta": "Add document photo",
+  "identityDocumentCapturedLabel": "Document photo added",
+  "identityDocumentSubmitCta": "Continue to selfie",
+  "identitySelfieStepTitle": "Take a selfie",
+  "identitySelfieStepBody": "Look straight at the camera in good light. We match your selfie to your ID photo.",
+  "identitySelfieCaptureCta": "Add selfie",
+  "identitySelfieCapturedLabel": "Selfie added",
+  "identitySelfieSubmitCta": "Submit for verification",
+  "identityProcessingTitle": "Verifying your identity",
+  "identityProcessingBody": "Matching your selfie to your document…",
+  "identityApprovedTitle": "Identity verified",
+  "identityApprovedBody": "Your identity is confirmed. You're ready for check-in.",
+  "identityManualReviewTitle": "Manual review in progress",
+  "identityManualReviewBody": "Our team is reviewing your documents. This usually takes a short while — we'll notify you when it's done.",
+  "identityRetryTitle": "Let's try that again",
+  "identityRetryBody": "We couldn't verify your identity from those photos. Please retake them and submit again.",
+  "identityRetryCta": "Try again",
+  "identityRejectedTitle": "Verification not approved",
+  "identityRejectedBody": "Our team could not approve your identity verification. Please contact the front desk for help.",
+  "identityRejectedRetryBody": "Our team could not approve your identity verification. You can submit new photos and try again.",
+  "identityAttemptCount": "Attempt {count}",
+  "@identityAttemptCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "identityBackToReservation": "Back to reservation",
+  "identityViewResultCta": "View result",
+  "identityUnavailableTitle": "Verification is unavailable",
+  "identityStatusNotStarted": "Not started",
+  "identityStatusDocumentUploaded": "Document uploaded",
+  "identityStatusSelfieCaptured": "Selfie captured",
+  "identityStatusMatchingInProgress": "Matching",
+  "identityStatusAutoApproved": "Verified",
+  "identityStatusPendingManualReview": "In review",
+  "identityStatusStaffApproved": "Verified",
+  "identityStatusStaffRejected": "Not approved",
+  "identityStatusRetryAllowed": "Retry needed",
+
+  "identityIntroBannerTitle": "Quick identity check",
+  "identityIntroBannerBody": "Two steps: a photo of your ID, then a live selfie. Photos are deleted once your stay ends.",
+  "identityIntroCta": "Start verification",
+  "identityCaptureDocumentTitle": "Photograph your ID",
+  "identityCaptureDocumentHint": "Fit the ID inside the frame with all four edges visible.",
+  "identityCaptureFootnote": "Camera only — no photo library uploads",
+  "identityCaptureFootnoteWeb": "Choose a clear photo of your ID",
+  "identitySelfieFootnoteWeb": "Choose a clear photo of your face",
+  "identityCaptureFootnoteSecurity": "Your photos are stored securely and deleted once your stay ends.",
+  "identityReviewDocumentTitle": "Confirm the ID photo",
+  "identityReviewDocumentBody": "Make sure the name, number and expiry date are readable.",
+  "identityReviewContinueCta": "Continue",
+  "identityReviewRetakeCta": "Retake photo",
+  "identityCaptureSelfieTitle": "Identity verification",
+  "identityCaptureSelfieHint": "Take a live photo from the camera",
+  "identityReviewRetakeHint": "You can retake it if the photo isn't clear",
+  "identityShutterLabel": "Take photo",
+  "identityCameraDeniedTitle": "Can't access the camera",
+  "identityCameraDeniedBody": "Verification needs a live camera photo and can't use the photo library. Allow camera access in Settings.",
+  "identityCameraUnavailableBody": "No camera is available on this device. Finish verification on another device or at reception.",
+  "identityOpenSettingsCta": "Open Settings",
+  "identityUploadingBannerTitle": "Uploading your photo",
+  "identityUploadingBannerBody": "Don't close the app. This usually takes a few seconds on a good connection.",
+  "identityUploadingCancelCta": "Cancel",
+  "identityProcessingContinueCta": "Continue",
+  "identitySuccessBannerTitle": "Identity verified",
+  "identitySuccessBannerBody": "You won't be asked to upload your ID again at any hotel in the group.",
+  "identityGoToCheckInCta": "Digital check-in",
+  "identityRejectedNoRetryBannerBody": "A staff member reviewed and did not approve your submission. You can complete this in person when you arrive — your reservation is kept.",
+  "identityContactReceptionCta": "Contact reception",
+  "identityFailedUploadBannerTitle": "Couldn't upload your photos",
+  "identityFailedUploadBannerBody": "The connection dropped while uploading. Your photos are saved on your device — you can retry without retaking them.",
+  "identityRetryUploadCta": "Retry upload",
+  "identityContinueLaterCta": "Continue later",
+  "identityFaceNotMatchedBannerTitle": "We couldn't match your face",
+  "identityFaceNotMatchedBannerBody": "The live photo didn't match your ID closely enough. Try again in good light, facing the camera directly.",
+  "identityRequestManualReviewCta": "Request manual review",
+  "identityDocumentUnclearBannerTitle": "Photo isn't clear",
+  "identityDocumentUnclearBannerBody": "We couldn't read your ID details. Retake the photo with no glare and all four edges visible.",
+  "identityContactReceptionBannerTitle": "Reception is available 24/7",
+  "identityContactReceptionBannerBody": "Reception is available around the clock at your hotel. A staff member can complete verification in person on arrival.",
+  "contactReceptionBody": "We'll connect you to your hotel's reception directly on {phone}.",
+  "@contactReceptionBody": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "contactReceptionNoPhoneBody": "You can reach the reception team directly at the hotel front desk.",
+  "contactReceptionCallCta": "Call reception",
+  "contactReceptionCallFailed": "Couldn't start a call on this device. Reception number: {phone}",
+  "@contactReceptionCallFailed": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "identityViewVerificationStatusCta": "View verification status",
+  "identityDetailsTitle": "Your ID details",
+  "identityDetailsBody": "Enter them exactly as printed on your document. We compare them with the photo of your ID and don't keep them.",
+  "identityDocumentTypeLabel": "Document type",
+  "identityDocumentTypePassport": "Passport",
+  "identityDocumentTypeNationalId": "National ID",
+  "identityDocumentTypeResidencePermit": "Residence permit",
+  "identityFullNameLabel": "Full name as on the document",
+  "identityFullNameHint": "For a passport, use the Latin letters printed on it",
+  "identityDocumentNumberLabel": "Document number",
+  "identityDateOfBirthLabel": "Date of birth",
+  "identityDateOfBirthHint": "Select a date",
+  "identityFieldRequired": "Required",
+  "identityDocumentNumberInvalid": "Letters and numbers only",
+  "identityUploadProgress": "{percent}% uploaded",
+  "@identityUploadProgress": {"placeholders": {"percent": {"type": "String"}}},
+  "identityReadingDocumentTitle": "Reading your ID",
+  "identityReadingDocumentBody": "We're checking the details on your document. This takes a few seconds — please keep the app open.",
+  "identityMismatchTitle": "Your details don't match your ID",
+  "identityMismatchFieldsBody": "Check what you entered against your document: {fields}.",
+  "@identityMismatchFieldsBody": {"placeholders": {"fields": {"type": "String"}}},
+  "identityMismatchBody": "What you entered doesn't match the document. Check your details or retake the photo.",
+  "identityFieldName": "name",
+  "identityFieldDocumentNumber": "document number",
+  "identityFieldDateOfBirth": "date of birth",
+  "identityEditDetailsCta": "Edit my details",
+  "identityExpiredTitle": "This document has expired",
+  "identityExpiredBody": "Your ID must be valid on your check-in date. Use another valid document.",
+  "identityUseAnotherDocumentCta": "Use another document",
+  "identityUnsupportedTitle": "This document isn't accepted",
+  "identityUnsupportedBody": "Use your passport, national ID or residence permit.",
+  "identityDocumentTypeEgyptianId": "Egyptian National ID",
+  "identityDocumentTypeSaudiId": "Saudi National ID",
+  "identityDocumentTypeSaudiIqama": "Saudi Iqama (residence)",
+  "identityDocumentSidesFrontOnly": "Photo of the details page only",
+  "identityDocumentSidesFrontAndBack": "Photos of the front and the back",
+  "identityDocumentSidesBackOptional": "Front photo — back optional",
+  "identityDocumentStaffCheck": "Our staff will check this document",
+  "identityFullNameArabicHint": "As printed in Arabic on the card",
+  "identityBirthDateFromNumber": "Your date of birth is read from the national number.",
+  "identityDocumentNumberInvalidForType": "Check the number format for this document",
+  "identityCaptureBackTitle": "Photograph the back",
+  "identityCaptureBackHint": "Turn the card over and fit it inside the frame.",
+  "identitySkipBackCta": "Skip — front only",
+  "identityReviewBothSides": "Front and back photos are ready. Make sure every detail is readable.",
+  "identityDocumentAcceptedTitle": "Document accepted",
+  "identityDocumentAcceptedBody": "Your details match your document. Next, take a live selfie.",
+  "identityDocumentReviewTitle": "Manual review required",
+  "identityDocumentReviewBody": "Our staff will confirm your document. Continue with the selfie to finish your part.",
+  "identitySubmitFailedTitle": "Couldn't submit your document",
+
+  "reservationCheckInCta": "Check in",
+
+  "checkInTitle": "Check in",
+  "checkInProcessingTitle": "Checking you in",
+  "accessTitle": "Room access",
+  "checkInReadyTitle": "Ready to check in",
+  "checkInReadyBody": "Your reservation is verified. Check in to get your room number and entry code.",
+  "checkInNotReadyTitle": "Not ready to check in yet",
+  "checkInRoomNotAssigned": "Your room is being prepared — check-in opens once reception assigns it.",
+  "checkInAtReception": "This hotel checks guests in at reception when you arrive.",
+  "checkInIdentityPending": "Complete identity verification first.",
+  "checkInNotReadyBody": "Complete payment and identity verification first.",
+  "checkInUnavailableTitle": "Check-in isn't available",
+  "checkInAlreadyDoneTitle": "You're already checked in",
+  "checkInCta": "Check in now",
+  "checkInProcessingBody": "Issuing your digital room key…",
+  "checkInDoNotClose": "Please keep this screen open.",
+  "checkInFailedTitle": "Check-in didn't complete",
+  "checkInFailedBody": "Your room key couldn't be issued. You can try again.",
+  "checkInPendingTitle": "Almost there",
+  "checkInPendingBody": "The front desk is finishing your check-in. Check again shortly.",
+  "checkInRetryCta": "Try again",
+
+  "accessCheckedInTitle": "You're checked in",
+  "accessRoomNumberLabel": "Room number",
+  "accessEntryCodeLabel": "Entry code",
+  "accessStayEndsLabel": "Your stay ends · {date}",
+  "@accessStayEndsLabel": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "accessRoomPending": "Assigned by reception",
+  "accessKeyNotWorking": "Key not working?",
+  "accessExpiresLabel": "Valid until your stay ends · {date}",
+  "@accessExpiresLabel": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "accessHelpBanner": "Code not working? Contact reception.",
+  "accessNotIssuedTitle": "No room key yet",
+  "accessNotIssuedBody": "Check in to get your digital room key.",
+  "accessRevokedTitle": "Room key deactivated",
+  "accessRevokedBody": "This room key is no longer active. Contact reception if you need help.",
+  "accessExpiredTitle": "Room key expired",
+  "accessExpiredBody": "Your stay has ended, so this room key no longer works.",
+  "accessFailedTitle": "Room key unavailable",
+  "accessUnavailableTitle": "Access is unavailable",
+  "accessBackToReservation": "Back to reservation",
+  "accessStatusNotIssued": "Not issued",
+  "accessStatusIssueRequested": "Issuing",
+  "accessStatusActive": "Active",
+  "accessStatusFailed": "Failed",
+  "accessStatusRevokeRequested": "Deactivating",
+  "accessStatusRevoked": "Deactivated",
+  "accessStatusExpired": "Expired",
+
+  "servicesTitle": "Hotel services",
+  "servicesIntroBanner": "Order what you need from your room. Requests go straight to reception.",
+  "servicesEmptyTitle": "No services available",
+  "servicesEmptyBody": "This hotel hasn't published any services yet.",
+  "servicesUnavailableTitle": "Services are unavailable",
+  "serviceUncategorised": "Other services",
+  "serviceFreeLabel": "Included",
+  "serviceEstimatedMinutes": "~{count} min",
+  "@serviceEstimatedMinutes": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "serviceDetailTitle": "Service",
+  "serviceQuantityLabel": "Quantity",
+  "serviceNotesLabel": "Notes (optional)",
+  "serviceNotesHint": "Anything the team should know",
+  "serviceRequestCta": "Request this service",
+  "serviceRequestingCta": "Sending…",
+  "serviceEstimatedTotalLabel": "Estimated total",
+  "serviceChargeNote": "Any charge is added to your room account and settled at checkout.",
+  "serviceRequestFailedTitle": "We couldn't send your request",
+  "myRequestsTitle": "My requests",
+  "myRequestsIntroBanner": "Track each request. You can cancel one before the team starts it.",
+  "myRequestsEmptyTitle": "No requests yet",
+  "myRequestsEmptyBody": "Request a service and it will show up here.",
+  "newRequestCta": "New request",
+  "serviceOrderDetailTitle": "Request details",
+  "serviceOrderRequestedAtLabel": "Requested",
+  "serviceOrderConfirmedAtLabel": "Accepted",
+  "serviceCancelCta": "Cancel request",
+  "serviceCancelConfirmTitle": "Cancel this request?",
+  "serviceCancelConfirmBody": "The team hasn't started this yet, so it can still be cancelled.",
+  "serviceCancelConfirmTitleFor": "Cancel the {service} request?",
+  "@serviceCancelConfirmTitleFor": {
+    "placeholders": {
+      "service": {
+        "type": "String"
+      }
+    }
+  },
+  "serviceCancelInProgressBody": "This request is already being handled. Cancelling now may not stop the team if they're on the way to your room.",
+  "serviceCancelConfirmCta": "Confirm cancellation",
+  "serviceCancelKeepCta": "Keep request",
+  "serviceCancelNotAllowed": "This request can no longer be cancelled.",
+  "serviceContactReception": "Contact reception",
+  "serviceContactReceptionHint": "Call reception from your room phone or the front desk for help with this request.",
+  "serviceStatusRequested": "Pending",
+  "serviceStatusConfirmed": "Accepted",
+  "serviceStatusFulfilled": "Completed",
+  "serviceStatusCancelled": "Cancelled",
+
+  "checkoutTitle": "Checkout",
+  "checkoutProcessingTitle": "Completing checkout",
+  "checkoutCompleteTitle": "Your stay summary",
+  "invoiceTitle": "Invoice",
+  "checkoutReadyTitle": "Ready to check out",
+  "checkoutReadyBody": "No pending tasks.",
+  "checkoutNotReadyTitle": "Checkout isn't available yet",
+  "checkoutNotReadyBody": "You can check out once your stay has started.",
+  "checkoutUnavailableTitle": "Checkout is unavailable",
+  "folioSummaryTitle": "Charge summary",
+  "folioAccommodationLine": "Accommodation",
+  "folioServiceLine": "Service charge",
+  "folioTotalLabel": "Total",
+  "folioPaidLabel": "Already paid",
+  "folioOutstandingLabel": "Amount due now",
+  "checkoutSettleNote": "The amount due is charged in one payment to your card on file. Your invoice is sent electronically.",
+  "checkoutCompleteCta": "Complete checkout",
+  "checkoutProcessingBody": "Settling your account…",
+  "checkoutDoNotClose": "Please keep this screen open.",
+  "checkoutDoneTitle": "Thank you for your stay",
+  "checkoutDoneBody": "Your account is settled and your invoice is ready.",
+  "checkoutPendingTitle": "Settlement is processing",
+  "checkoutPendingBody": "Your bank hasn't confirmed the payment yet. Check the status again shortly.",
+  "checkoutFailedTitle": "Settlement didn't complete",
+  "checkoutFailedBody": "No money was taken. You can try again.",
+  "checkoutRetryCta": "Try again",
+  "checkoutViewInvoiceCta": "View invoice",
+  "checkoutDoneCta": "Done",
+  "checkoutStatusInProgress": "In progress",
+  "checkoutStatusAwaitingSettlement": "Awaiting settlement",
+  "checkoutStatusSettlementFailed": "Settlement failed",
+  "checkoutStatusCompleted": "Completed",
+  "invoiceIssuedBannerTitle": "Your e-invoice was issued",
+  "invoiceIssuedBannerBody": "It was sent to your email and is always saved here — no paper invoice.",
+  "invoiceNumberLabel": "Invoice number",
+  "invoiceIssuedLabel": "Issued",
+  "invoiceItemsTitle": "Items",
+  "invoiceSubtotalLabel": "Subtotal",
+  "invoicePaymentsLabel": "Payments",
+  "invoiceOutstandingLabel": "Outstanding",
+  "invoiceSettledTag": "Settled in full",
+  "invoiceNotReadyTitle": "No invoice yet",
+  "invoiceNotReadyBody": "Your invoice will be here once you check out.",
+  "invoiceUnavailableTitle": "Invoice is unavailable",
+
+  "reservationLoyaltyCta": "Loyalty & points",
+  "reservationReviewCta": "Leave a review",
+  "reservationViewReviewCta": "View your review",
+
+  "loyaltyTitle": "Loyalty",
+  "loyaltyUnavailableTitle": "Loyalty is unavailable",
+  "loyaltyBalanceLabel": "Points balance",
+  "loyaltyPointsValue": "{points, plural, =1{1 pt} other{{points} pts}}",
+  "@loyaltyPointsValue": {
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "loyaltyGroupWideNote": "Your points work across every hotel in the group.",
+  "loyaltyProgramOffTitle": "The loyalty programme isn't active",
+  "loyaltyProgramOffBody": "This hotel group hasn't switched on points earning yet. There's nothing to do here for now.",
+  "loyaltyAlreadyEarnedTitle": "Points already added",
+  "loyaltyAlreadyEarnedBody": "You've already earned points for this stay.",
+  "loyaltyHistoryTitle": "Points history",
+  "loyaltyHistoryNote": "Your full points ledger is kept by the hotel group. This is a read-only copy.",
+  "loyaltyHistoryEmptyTitle": "No points activity yet",
+  "loyaltyHistoryEmptyBody": "Points you earn and redeem will show up here.",
+  "loyaltyPointsAdded": "{points, plural, =1{+1 pt} other{+{points} pts}}",
+  "@loyaltyPointsAdded": {
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "loyaltyPointsRemoved": "{points, plural, =1{-1 pt} other{-{points} pts}}",
+  "@loyaltyPointsRemoved": {
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "loyaltyTxThisStay": "This stay",
+  "loyaltyTxEarnLabel": "Earned",
+  "loyaltyTxRedeemLabel": "Redeemed",
+  "loyaltyTxReverseLabel": "Reversed",
+  "loyaltyTxAdjustLabel": "Adjustment",
+  "loyaltyTxExpireLabel": "Expired",
+  "loyaltyRedeemCta": "Redeem points",
+  "loyaltyRedeemTitle": "Redeem points",
+  "loyaltyRedeemSubmitCta": "Redeem",
+  "loyaltyRedeemingCta": "Redeeming…",
+  "loyaltyRedeemAmountLabel": "Points to redeem",
+  "loyaltyRedeemNote": "Points are redeemed against this booking. The hotel group confirms the final value.",
+  "loyaltyRedeemMax": "Use max ({points})",
+  "@loyaltyRedeemMax": {
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "loyaltyRedeemedTitle": "Points redeemed",
+  "loyaltyRedeemedBody": "{points, plural, =1{1 point was redeemed against this booking.} other{{points} points were redeemed against this booking.}}",
+  "@loyaltyRedeemedBody": {
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "loyaltyRedeemedValueNote": "That's about {value} {currency} off this booking.",
+  "@loyaltyRedeemedValueNote": {
+    "placeholders": { "value": { "type": "String" }, "currency": { "type": "String" } }
+  },
+  "loyaltyRedeemNotEligibleTitle": "Can't redeem on this booking",
+  "loyaltyRedeemNotEligibleBody": "Points can only be redeemed against an active booking.",
+  "loyaltyAlreadyRedeemedTitle": "Already redeemed",
+  "loyaltyAlreadyRedeemedBody": "Points were already redeemed against this booking.",
+  "loyaltyAlreadyRedeemedDifferentBody": "A different number of points was already redeemed against this booking.",
+  "loyaltyInsufficientTitle": "Not enough points",
+  "loyaltyInsufficientBody": "You don't have enough points for that amount.",
+  "loyaltyInvalidAmountBody": "Choose how many points to redeem.",
+
+  "reviewFormTitle": "Leave a review",
+  "reviewFormPrompt": "How was your stay?",
+  "reviewResultTitle": "Your review",
+  "reviewProcessingTitle": "Sending your review",
+  "reviewProcessingBody": "Sending your review…",
+  "reviewDoNotClose": "This only takes a moment. Please don't close the app.",
+  "reviewRatingRequired": "Choose a rating from 1 to 5 stars.",
+  "reviewStarsLabel": "{count, plural, =1{1 star} other{{count} stars}}",
+  "@reviewStarsLabel": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "reviewCategoriesHeading": "Rate the details of your stay",
+  "reviewCategoriesHint": "Optional — rate the ones that matter to you.",
+  "reviewTextLabel": "Your review (optional)",
+  "reviewTextHint": "Tell other guests about your stay",
+  "reviewSubmitCta": "Submit review",
+  "reviewSubmittingCta": "Submitting…",
+  "reviewYourRatingLabel": "Your rating",
+  "reviewBackToReservation": "Back to reservation",
+  "reviewUnavailableTitle": "Reviews are unavailable",
+  "reviewNotEligibleTitle": "You can't review this stay",
+  "reviewNotEligibleBody": "Reviews open once your stay is completed.",
+  "reviewSubmittedTitle": "Thanks for your review",
+  "reviewPublishedBody": "Your review has been posted.",
+  "reviewPendingModerationBody": "Your review was received and is with our team for a quick check before it's published.",
+  "reviewAlreadyTitle": "You've already reviewed this stay",
+  "reviewAlreadyBody": "Only one review per stay. Your existing review is shown below.",
+  "reviewRejectedTitle": "This review wasn't published",
+  "reviewRejectedBody": "Your review didn't pass our check and wasn't published.",
+  "reviewInvalidRatingTitle": "Rating out of range",
+  "reviewInvalidRatingBody": "A rating must be between 1 and 5 stars.",
+  "reviewFailedTitle": "We couldn't send your review",
+  "reviewStatusPending": "Pending review",
+  "reviewStatusPublished": "Published",
+  "reviewStatusRejected": "Not published",
+
+  "serviceReviewFormTitle": "Rate this service",
+  "serviceReviewFormPrompt": "How was this service?",
+  "serviceReviewResultTitle": "Your service review",
+  "serviceReviewNotEligibleTitle": "You can't review this service yet",
+  "serviceReviewNotEligibleBody": "Reviews open once the service has been fulfilled.",
+  "serviceReviewTextHint": "Tell other guests about this service",
+  "hotelDetailStarRating": "{count}-star hotel",
+  "@hotelDetailStarRating": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "hotelDetailReviewsHeading": "Ratings & reviews",
+  "hotelInfoRoomTypesLabel": "Room types",
+  "hotelInfoCountryLabel": "Country",
+  "hotelInfoGuestsLabel": "Guests",
+  "hotelInfoClassificationLabel": "Classification",
+  "hotelInfoCheckInLabel": "Check-in",
+  "hotelInfoCheckOutLabel": "Check-out",
+  "hotelTimeOfDay": "{time} {period, select, am{AM} noon{PM} other{PM}}",
+  "@hotelTimeOfDay": {
+    "placeholders": { "time": { "type": "String" }, "period": { "type": "String" } }
+  },
+  "hotelInfoRoomsLabel": "Rooms",
+  "hotelRoomCount": "{count, plural, =1{1 room} other{{count} rooms}}",
+  "@hotelRoomCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "hotelInfoSuitableForLabel": "Suitable for",
+  "hotelLocationHeading": "Location",
+  "hotelShare": "Share",
+  "hotelShareCopied": "Hotel details copied",
+  "hotelFavoriteAdd": "Add to favourites",
+  "hotelFavoriteRemove": "Remove from favourites",
+  "hotelLocationMapSemantics": "Hotel location on the map",
+  "hotelLocationMapOpenHint": "Tap to open the full map",
+  "mapAttribution": "© OpenStreetMap contributors",
+  "hotelNearbyPlace": "{place} {minutes, plural, =1{1 minute} other{{minutes} minutes}}",
+  "@hotelNearbyPlace": {
+    "placeholders": { "place": { "type": "String" }, "minutes": { "type": "int" } }
+  },
+  "hotelNearbyPlaceKm": "{place} {distance} km",
+  "@hotelNearbyPlaceKm": {
+    "description": "Nearby place with its distance in kilometres (shown when no travel time is on file).",
+    "placeholders": { "place": { "type": "String" }, "distance": { "type": "String" } }
+  },
+  "hotelNearbyPlaceMeters": "{place} {distance} m",
+  "@hotelNearbyPlaceMeters": {
+    "description": "Nearby place with its distance in metres (shown when no travel time is on file).",
+    "placeholders": { "place": { "type": "String" }, "distance": { "type": "String" } }
+  },
+  "hotelWhyChooseHeading": "Why choose this hotel?",
+  "hotelDetailAmenitiesSubtitle": "Services designed for guests' comfort around the clock",
+  "hotelRoomsHeading": "Available rooms",
+  "hotelRoomsSubtitle": "Pick the right room for your trip and enjoy a refined stay",
+  "hotelRoomsCta": "View available rooms",
+  "hotelReviewsSubtitle": "Guest ratings reflect the quality of service and comfort during the stay",
+  "hotelOverallRating": "Overall rating",
+  "hotelPriceFromLabel": "From",
+  "roomSpecArea": "Room size",
+  "roomSpecGuests": "Guests",
+  "roomSpecBed": "Bed type",
+  "roomSpecView": "View",
+  "roomBookingDetailsHeading": "Your booking details",
+  "roomStayDuration": "Duration",
+  "roomStayDates": "Dates",
+  "roomStayGuests": "Guests",
+  "roomNightlyPriceLabel": "Room rate",
+  "roomTotalLabel": "Total",
+  "roomIncludedHeading": "The price includes",
+  "roomAboutHeading": "About the room",
+  "roomPoliciesHeading": "Policies",
+  "roomCurrentPrice": "Current price",
+  "commonShowMore": "Show more",
+  "commonShowLess": "Show less",
+
+  "bookingsPillCurrent": "Current",
+  "bookingsPillUpcoming": "Upcoming",
+  "bookingsPillPast": "Past",
+  "bookingsPastTitle": "Past stays",
+  "bookingsSectionOngoingStay": "Ongoing stay",
+  "bookingsSectionUpcoming": "Upcoming bookings",
+  "bookingsEmptyTitle": "No bookings yet",
+  "bookingsEmptyBody": "Your bookings will appear here once you make one.",
+  "bookingStatusPending": "Awaiting payment",
+  "bookingStatusConfirmed": "Confirmed",
+  "bookingStatusCheckedIn": "Checked in",
+  "bookingStatusCompleted": "Completed",
+  "bookingStatusCancelled": "Cancelled",
+  "bookingDetailTitle": "Booking details",
+  "bookingPaymentStatusHeading": "Payment status",
+  "bookingCancellationPolicyHeading": "Cancellation policy",
+  "bookingCancellationPolicyBody": "Free cancellation up to 24 hours before arrival. After that, the deposit is deducted.",
+  "bookingPendingRowTitle": "Awaiting payment",
+  "bookingPendingRowSubtitle": "Not completed",
+  "bookingAutoCancelRowTitle": "The booking auto-cancels in 30 minutes",
+  "bookingRoomHeldRowTitle": "The room is held temporarily",
+  "bookingRoomHeldRowSubtitle": "Not confirmed",
+  "bookingDepositHeldRowTitle": "The deposit has been held",
+  "bookingDepositHeldRowSubtitle": "No charge has been made yet",
+  "bookingDeductedAtCheckinRowTitle": "Deducted at check-in",
+  "bookingExtrasChargedOnceRowTitle": "Extra charges are collected on departure",
+  "bookingExtrasChargedOnceRowSubtitle": "As a single payment",
+  "bookingIdentityVerifiedRowTitle": "Your identity has been verified",
+  "bookingIdentityVerifiedRowSubtitle": "Complete",
+  "bookingCheckInAvailableRowTitle": "Check-in available from",
+  "bookingDepositAmountHeldRowTitle": "Deposit amount held",
+  "bookingOngoingStayRowTitle": "Ongoing stay",
+  "bookingRoomLabel": "Room {number}",
+  "@bookingRoomLabel": { "placeholders": { "number": { "type": "String" } } },
+  "bookingDepartureRowTitle": "Departure",
+  "bookingExtraChargesRowTitle": "Extra charges",
+  "bookingCancelledRowTitle": "Booking cancelled",
+  "bookingDepositRefundRowTitle": "Deposit refund",
+  "bookingDepositRefundRowSubtitle": "Within 3 business days",
+  "bookingCancellationFeeRowTitle": "Cancellation fee",
+  "bookingCancellationFeeNone": "None",
+  "bookingDepositNotRefunded": "Non-refundable rate — no refund",
+  "bookingStayEndedRowTitle": "Stay ended",
+  "bookingTotalPaidRowTitle": "Total paid",
+  "bookingInvoiceReadyRowTitle": "E-invoice",
+  "bookingInvoiceReadyRowSubtitle": "Ready",
+  "bookingCtaContinuePayment": "Continue payment",
+  "bookingCtaCancelReservation": "Cancel booking",
+  "bookingCtaVerifyIdentity": "Verify identity",
+  "bookingCtaDigitalCheckIn": "Digital check-in",
+  "bookingCtaMyCurrentStay": "My current stay",
+  "bookingCtaShowAccessCode": "Show access code",
+  "bookingCtaBookAgain": "Book again",
+  "bookingCtaViewInvoice": "View invoice",
+  "bookingCancelConfirmTitle": "Cancel this booking?",
+  "bookingCancelFullRefundBody": "Cancellation is free and your full deposit will be released.",
+  "bookingCancelNoRefundBody": "The deposit is not refunded if you cancel this booking.",
+  "policyFreeUntil": "Free cancellation with a full refund until {date}. After that it cannot be cancelled.",
+  "@policyFreeUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "policyWindowClosed": "The free cancellation window has closed; this booking can no longer be cancelled.",
+  "policyNonRefundable": "This rate is non-refundable and cannot be cancelled.",
+  "policyStayStarted": "A booking cannot be cancelled once the stay has started.",
+  "policyGeneral": "Refundable rates can be cancelled free, with a full refund, within {hours} hours of booking or until check-in if that is sooner. After that they cannot be cancelled. Non-refundable rates cannot be cancelled.",
+  "@policyGeneral": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "cancelNotAllowedError": "This booking can no longer be cancelled under its cancellation policy.",
+  "cancelRefundFailedError": "The deposit couldn't be released right now, so the booking wasn't cancelled. Please try again.",
+  "bookingCancelConfirmBody": "This can't be undone. Any deposit will be refunded per the cancellation policy.",
+  "bookingCancelKeepCta": "Go back",
+  "bookingCancelConfirmCta": "Confirm cancellation",
+  "bookingNotFoundTitle": "Booking not found",
+
+  "accountTitle": "Account",
+  "accountPrivacyNoteBody": "Your ID photos are stored securely and deleted automatically after your stay.",
+  "profilePersonalInfoTitle": "My details",
+  "profilePersonalInfoBannerTitle": "Your personal details",
+  "profilePersonalInfoBannerBody": "Used for your bookings and invoices. To change your name or ID number, contact reception.",
+  "profileNameLabel": "Name",
+  "profilePhoneLabel": "Mobile number",
+  "profileEmailLabel": "Email",
+  "profileEmailAdd": "Add",
+  "profileVerifiedIdentityLabel": "Verified identity",
+  "profileVerified": "Verified",
+  "profileNotVerified": "Not verified yet",
+  "profileSaveChanges": "Save changes",
+  "profileSave": "Save",
+  "profileDone": "Done",
+  "profileSaved": "Your changes were saved.",
+  "profilePreferencesTitle": "My preferences",
+  "profilePreferencesBannerTitle": "Stay preferences",
+  "profilePreferencesBannerBody": "We use these to prepare your room ahead of time at every hotel in the group.",
+  "profilePrefRoomType": "Room type",
+  "profilePrefHighFloor": "High floor",
+  "profilePrefExtraPillows": "Extra pillows",
+  "profilePrefLanguage": "App language",
+  "profilePrefNotifications": "Notifications",
+  "profilePrefOn": "On",
+  "profilePrefOff": "Off",
+  "profilePrefOnFeminine": "On",
+  "profilePrefOffFeminine": "Off",
+  "profilePrivacyBannerTitle": "How we use your data",
+  "profilePrivacyBannerBody": "Your ID photos are stored encrypted and deleted automatically after your stay. They are never shared with third parties.",
+  "profilePrivacyIdPhotos": "ID photos",
+  "profilePrivacyIdPhotosValue": "Deleted after departure",
+  "profileIdentityDeleteAfterCheckout": "Delete my ID photos after checkout (default)",
+  "profileIdentityKeepForFuture": "Keep them for my future bookings",
+  "profileIdentityKeptValue": "Kept for future bookings",
+  "profileIdentityHotelCopyNote": "The hotel keeps the stay's ID copy for {days} days after checkout, then it is deleted automatically.",
+  "@profileIdentityHotelCopyNote": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "profilePrivacyPaymentData": "Payment details",
+  "profilePrivacyPaymentDataValue": "Not stored",
+  "profilePrivacyStayHistory": "Stay history",
+  "profileRequestDeletion": "Request data deletion",
+  "profileDeletionConfirmTitle": "Delete your personal data?",
+  "profileDeletionConfirmBody": "Your request goes to the hotel team, who will contact you to complete it. It does not cancel your current bookings.",
+  "profileDeletionConfirmCta": "Send request",
+  "profileDeletionRequestedTitle": "Your deletion request was received",
+  "profileDeletionRequestedBody": "You sent the request on {date}. The hotel team will contact you to complete it.",
+  "@profileDeletionRequestedBody": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "profileDeletionRequestedCta": "Request sent",
+  "profileSupportTitle": "Help",
+  "profileSupportBannerTitle": "How can we help?",
+  "profileSupportBannerBody": "Support is available around the clock, and you can contact your hotel directly.",
+  "profileFaq": "FAQ",
+  "profileFaqEmptyTitle": "No FAQ yet",
+  "profileFaqEmptyBody": "Contact your hotel directly with any question.",
+  "profileDuringStayOnly": "Available during a stay",
+  "profileContactReceptionNoStay": "Available with a booking",
+  "profileLogoutConfirmTitle": "Sign out of your account?",
+  "profileLogoutConfirmBody": "You'll need a new verification code to sign in again. Your bookings and current stay aren't affected.",
+  "accountLoyaltyProgramTitle": "Loyalty program",
+  "accountLoyaltyPointsSuffix": "points",
+  "accountLoyaltyDescription": "Your points build up across every hotel in the group and can be redeemed at any branch.",
+  "accountLoyaltyPerNightLabel": "Per night",
+  "accountTrustedGuestTitle": "Trusted guest",
+  "accountTrustedGuestBody": "You won't be asked to re-upload your ID at any other hotel in the group.",
+  "accountPreviousStaysLabel": "Previous stays",
+  "accountPreferencesLabel": "My preferences",
+  "accountPreferencesEmpty": "Not set yet",
+  "accountPrivacyLabel": "Privacy & data",
+  "accountHelpSupportLabel": "Help & support",
+
+  "stayHomeTitle": "Your current stay",
+  "stayHomeRoomLabel": "Your room",
+  "stayHomeHotelUntil": "{hotel} · until {date}",
+  "@stayHomeHotelUntil": {
+    "placeholders": {
+      "hotel": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "bookingRoomNumber": "Room {number}",
+  "@bookingRoomNumber": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "stayHomeServicesHeading": "Services",
+  "stayHomeRoomService": "Room service",
+  "stayHomeRoomCleaning": "Room cleaning",
+  "stayHomeExtendStay": "Extend stay",
+  "stayHomeReportProblem": "Report a problem",
+  "stayHomeExtraCharges": "Extra charges",
+  "stayHomeExtraChargesNote": "Deducted automatically on departure",
+  "stayHomeNoActiveStayTitle": "No active stay",
+  "stayHomeNoActiveStayBody": "Once you check in, your room, key and services will show up here.",
+  "guestSignInRequiredTitle": "Sign in to continue",
+  "guestSignInBookingsBody": "Sign in to see and manage your bookings.",
+  "guestSignInServicesBody": "Sign in to reach your stay's services, room key and requests.",
+  "guestSignInAction": "Sign in",
+
+  "extendStayTitle": "Extend stay",
+  "extendStayNewCheckOutLabel": "New checkout date",
+  "extendStayNightsAddedLabel": "Nights added",
+  "extendStayCta": "Confirm extension",
+  "extendStaySuccessTitle": "Stay extended",
+  "extendStaySuccessBody": "Your checkout date is now {date}. {amount} has been added to your folio.",
+  "@extendStaySuccessBody": {
+    "placeholders": { "date": { "type": "String" }, "amount": { "type": "String" } }
+  },
+  "extendStayNotEligible": "Extend stay is only available during your current stay.",
+
+  "reportProblemTitle": "Report a problem",
+  "reportProblemCategoryHeading": "What's the issue?",
+  "reportProblemCategoryBody": "Choose the closest category so your report reaches the right team directly.",
+  "reportCategoryAcHeating": "AC or heating",
+  "reportCategoryPlumbingWater": "Plumbing or water",
+  "reportCategoryElectricityLighting": "Electricity and lighting",
+  "reportCategoryRoomCleanliness": "Room cleanliness",
+  "reportCategoryInternetWifi": "Internet and Wi-Fi",
+  "reportCategoryNoiseDisturbance": "Noise or disturbance",
+  "reportProblemContinueCta": "Continue",
+  "reportDescriptionTitle": "Problem description",
+  "reportUrgencyHeading": "How urgent is this?",
+  "reportUrgencyNormal": "Normal",
+  "reportUrgencyImportant": "Important",
+  "reportUrgencyUrgent": "Urgent",
+  "reportNotesLabel": "Notes (optional)",
+  "reportNotesHint": "Add any details that help our team respond faster",
+  "reportNoFeeTitle": "No fees",
+  "reportNoFeeBody": "Reporting a problem is free and will never be added to your bill.",
+  "reportSubmitCta": "Submit report",
+  "reportSubmittingCta": "Submitting…",
+  "reportFailedTitle": "We couldn't send your report",
+  "reportSubmittedTitle": "Submitted",
+  "reportSubmittedBannerTitle": "Your report reached reception",
+  "reportSubmittedBannerBody": "Report {reference}. Our reception team will be in touch shortly, and you can track its status anytime.",
+  "@reportSubmittedBannerBody": {
+    "placeholders": { "reference": { "type": "String" } }
+  },
+  "reportTrackCta": "Track report",
+  "reportDetailTitle": "Report details",
+  "reportDetailBody": "Your report has been received and our team is on it.",
+  "reportContactReceptionCta": "Contact reception",
+  "reportStatusOpen": "Open",
+  "reportStatusInProgress": "In progress",
+  "reportStatusResolved": "Resolved",
+  "reportUnavailableTitle": "Reports are unavailable",
+  "reportNotFoundTitle": "Report not found",
+  "myReportsTitle": "My reports",
+  "myReportsIntroBanner": "Track the status of every problem you've reported.",
+  "myReportsEmptyTitle": "No reports yet",
+  "myReportsEmptyBody": "Report a problem and it will show up here.",
+  "newReportCta": "New report",
+  "bookingLoyaltyWorth": "Worth",
+  "bookingLoyaltyRedeem": "Redeem",
+  "bookingLoyaltyPointsField": "Points",
+  "bookingLoyaltyPointsHint": "Enter points",
+  "bookingLoyaltyDiscountField": "Discount",
+  "bookingLoyaltyApply": "Apply",
+  "bookingLoyaltyRemove": "Remove",
+  "bookingLoyaltyMaxHint": "Up to {points} points on this booking",
+  "@bookingLoyaltyMaxHint": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "bookingLoyaltyAppliedNote": "Redeemed when you confirm the booking",
+  "bookingLoyaltyDisabled": "Points redemption isn't available yet",
+  "bookingLoyaltyNoPoints": "You have no points to redeem yet",
+  "bookingLoyaltyDiscountRow": "Points discount",
+  "bookingLoyaltyRedeemFailed": "Your points couldn't be redeemed — nothing was deducted.",
+  "loyaltyAutoEarnTitle": "Points on the way",
+  "loyaltyAutoEarnBody": "Points for this stay are added to your balance automatically once it's complete.",
+  "bookingCheckInFrom": "From {time}",
+  "@bookingCheckInFrom": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "roomPolicyCheckInBody": "From {time}",
+  "@roomPolicyCheckInBody": {"placeholders": {"time": {"type": "String"}}},
+  "roomPolicyCheckOutBody": "Until {time}",
+  "@roomPolicyCheckOutBody": {"placeholders": {"time": {"type": "String"}}},
+  "roomTaxesLabel": "Taxes & fees",
+  "roomPriceIncludedValue": "Included",
+  "roomFinalPriceNote": "Final price — no extra fees",
+  "roomPolicyCheckInTitle": "Check-in",
+  "roomPolicyCheckOutTitle": "Check-out"
+}

@@ -1,0 +1,108 @@
+name: hotel_guest_app
+description: "Hotel Management System — Guest mobile application (Flutter client of the Laravel REST API)."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management + compile-safe dependency injection. Lets the UI depend on
+  # repository/data-source abstractions while tests swap in the dummy data source
+  # via ProviderContainer overrides without any UI coupling.
+  flutter_riverpod: ^2.6.1
+
+  # Declarative routing / navigation foundation. Flutter-team package, deep-link
+  # ready for the journeys described in mobile/docs/architecture.md §10.
+  go_router: ^14.6.2
+
+  # HTTP client foundation for the API layer (interceptors, timeouts, centralized
+  # error parsing per mobile/docs/architecture.md §5). Pure Dart — no native pods,
+  # so it builds on every target while Android SDK / Xcode / CocoaPods are absent.
+  dio: ^5.7.0
+
+  # MIME content-type for multipart uploads (identity document/selfie) — a
+  # transitive dio dependency already resolved; declared directly since
+  # `api_identity_verification_data_source.dart` imports it by name.
+  http_parser: ^4.0.2
+
+  # Message formatting + locale utilities used by the generated localizations.
+  intl: any
+
+  cupertino_icons: ^1.0.8
+
+  # Iconsax — the "Hicon / Bold" + "Hicon / Linear" set the Figma uses for all
+  # nav / status / domain glyphs (verified from the `.fig` component names:
+  # "Hicon / Bold / Home 1", "…/ Profile 1", "…/ Star 1", "…/ Ticket 1",
+  # "…/ Category", "…/ Shield Tick", "…/ Danger Triangle", …). `iconsax_plus`
+  # bundles both weights as a font; consumed only through `AppIcons`.
+  iconsax_plus: ^1.0.0
+
+  # Live hotel location map (Hotel Detail `location-section`) — OpenStreetMap
+  # tiles, the same source as the dashboard's Leaflet location picker. Pure
+  # Dart rendering; `latlong2` is its coordinate type.
+  flutter_map: ^8.3.2
+  latlong2: ^0.10.1
+
+  # Lucide — the Hotel Detail Figma draws its section glyphs with Lucide
+  # (layer names `clock-3`, `bed-double`, `waves`, `plane`, …) at a 1px stroke;
+  # the package's weight-300 fonts match. Consumed only through `AppIcons`.
+  lucide_icons_flutter: ^3.1.20
+
+  # Hotel Detail hero `share-button`: the platform share sheet (Web Share API
+  # on web); the UI falls back to the clipboard where none is available.
+  share_plus: ^13.3.0
+
+  # Identity verification capture (`IDENTITY_CaptureID` / `IDENTITY_Selfie`):
+  # the platform camera only — the Figma forbids gallery uploads. Wrapped by
+  # `IdentityCamera` so tests never touch a device camera.
+  image_picker: ^1.2.3
+
+  # `IDENTITY_CameraDenied` "فتح الإعدادات" — opens this app's system
+  # settings page so the guest can re-enable the camera permission.
+  app_settings: ^9.0.0
+
+  # `tel:` links for "تواصل مع الاستقبال" (the hotel's reception phone) and
+  # opening a hotel's location in the device maps app.
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  # Real Figma imagery (photographic fills exported from hotel_guest_app.fig).
+  # Filenames keep the original Figma content hash so each asset stays traceable
+  # to mobile/Design/assets/manifest.json. Consumed only through AppImage /
+  # AppImages (lib/core/widgets/app_image.dart) — never referenced by path.
+  assets:
+    - assets/images/
+    # The brand mark is drawn as vector paths (BrandLogo) — no raster asset.
+
+  # Tajawal — the approved (only) font family (decision 2026-09-26).
+  # A humanist Arabic sans with a full Latin set, so the same family renders the
+  # Arabic UI and the "Hotel System" wordmark. SIL OFL 1.1, see
+  # assets/fonts/OFL.txt.
+  fonts:
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Tajawal-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Tajawal-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Tajawal-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Tajawal-ExtraBold.ttf
+          weight: 800

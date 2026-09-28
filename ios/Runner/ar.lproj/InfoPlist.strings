@@ -1,0 +1,2 @@
+/* Camera permission prompt (identity verification). */
+"NSCameraUsageDescription" = "تُستخدم الكاميرا لتصوير هويتك والتقاط صورة سيلفي مباشرة للتحقق من هويتك قبل تسجيل الدخول إلى الفندق.";
