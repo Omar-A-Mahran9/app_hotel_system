@@ -11,6 +11,7 @@ import 'package:hotel_guest_app/features/identity_verification/data/datasources/
 import 'package:hotel_guest_app/features/identity_verification/data/models/identity_verification_models.dart';
 import 'package:hotel_guest_app/features/identity_verification/domain/entities/identity_verification_request.dart';
 import 'package:hotel_guest_app/features/identity_verification/data/device/identity_camera.dart';
+import 'package:hotel_guest_app/features/identity_verification/data/device/live_identity_camera.dart';
 import 'package:hotel_guest_app/features/identity_verification/domain/entities/identity_document.dart';
 import 'package:hotel_guest_app/features/identity_verification/domain/entities/identity_document_check.dart';
 import 'package:hotel_guest_app/features/identity_verification/presentation/state/identity_verification_providers.dart';
@@ -76,6 +77,66 @@ class _GatedSource extends DummyIdentityVerificationDataSource {
     onProgress?.call(1);
     await read.future;
     return super.submitDocument(request, onProgress: null);
+  }
+}
+
+/// A live viewfinder that is "ready" at once (or fails with [failWith]).
+class _FakeViewfinder extends IdentityViewfinder {
+  _FakeViewfinder(this.target, this.failWith);
+
+  final IdentityCaptureTarget target;
+  final IdentityCameraUnavailable? failWith;
+  IdentityViewfinderStatus _status = IdentityViewfinderStatus.initializing;
+  int shots = 0;
+  bool disposed = false;
+
+  @override
+  IdentityViewfinderStatus get status => _status;
+
+  @override
+  IdentityCameraUnavailable? get problem => failWith;
+
+  @override
+  Future<void> start() async {
+    _status = failWith == null ? IdentityViewfinderStatus.ready : IdentityViewfinderStatus.unavailable;
+    notifyListeners();
+  }
+
+  @override
+  Future<void> pause() async {}
+
+  @override
+  Widget buildPreview() => ColoredBox(key: ValueKey('fake-live-${target.name}'), color: Colors.teal);
+
+  @override
+  Future<IdentityCaptureResult> takePicture() async {
+    shots++;
+    return const IdentityCaptured(CapturedImage.dummy);
+  }
+
+  @override
+  void dispose() {
+    disposed = true;
+    super.dispose();
+  }
+}
+
+/// A device camera with a live viewfinder; its one-shot [capture] is the
+/// image_picker fallback (recorded by [FakeIdentityCamera]).
+class _FakeLiveCamera extends FakeIdentityCamera implements LiveIdentityCamera {
+  _FakeLiveCamera({this.failWith});
+
+  final IdentityCameraUnavailable? failWith;
+  final List<_FakeViewfinder> opened = <_FakeViewfinder>[];
+
+  @override
+  bool get supportsLiveViewfinder => true;
+
+  @override
+  IdentityViewfinder openViewfinder(IdentityCaptureTarget target) {
+    final _FakeViewfinder v = _FakeViewfinder(target, failWith);
+    opened.add(v);
+    return v;
   }
 }
 
@@ -367,6 +428,8 @@ void main() {
     expect(find.text(en.identityMismatchTitle), findsOneWidget);
     expect(find.text(en.identityMismatchFieldsBody(en.identityFieldDocumentNumber)), findsOneWidget);
     expect(find.text(en.identityCaptureSelfieHint), findsNothing, reason: 'no selfie while rejected');
+    // Never a dead end: reception can finish the check by hand.
+    expect(find.text(en.identityStuckContactReception), findsOneWidget);
 
     await tester.tap(find.widgetWithText(FilledButton, en.identityEditDetailsCta));
     await tester.pumpAndSettle();
@@ -604,4 +667,91 @@ void main() {
       }
     });
   }
+
+  testWidgets('the mismatch screen links to reception', (tester) async {
+    final en = await _l10n('en');
+    final source = DummyIdentityVerificationDataSource()
+      ..nextDocumentCheck = DocumentCheckStatus.mismatch;
+    await _open(tester, reservationIdForScenario(DummyVerificationScenario.autoApprove),
+        source: source, camera: FakeIdentityCamera());
+    await _dismissIntro(tester, en);
+    await _captureAndSubmitDocument(tester, en);
+
+    await tester.tap(find.text(en.identityStuckContactReception));
+    await tester.pumpAndSettle();
+    expect(find.text(en.identityContactReceptionBannerTitle), findsOneWidget);
+  });
+
+  testWidgets('Egyptian ID with the live camera: card frame + tips, feed inside the frame, one session for both sides',
+      (tester) async {
+    final en = await _l10n('en');
+    final camera = _FakeLiveCamera();
+    await _open(tester, reservationIdForScenario(DummyVerificationScenario.autoApprove), camera: camera);
+    await tester.tap(find.widgetWithText(FilledButton, en.identityIntroCta));
+    await tester.pumpAndSettle();
+    await _fillDetails(tester, en, type: IdentityDocumentType.egyptianNationalId);
+
+    // Front: the feed is inside a landscape, card-shaped frame, with instructions.
+    final Finder feed = find.byKey(const ValueKey('fake-live-document'));
+    expect(feed, findsOneWidget);
+    final Size frame = tester.getSize(feed);
+    expect(frame.width / frame.height, closeTo(85.6 / 53.98, 0.02));
+    for (final String tip in <String>[en.identityCaptureTipFrame, en.identityCaptureTipLight, en.identityCaptureTipSteady]) {
+      expect(find.text(tip), findsOneWidget);
+    }
+
+    await tester.tap(find.byKey(_shutterButton));
+    await tester.pumpAndSettle();
+    // Back: same camera session (no re-open between the two sides).
+    expect(find.text(en.identityCaptureBackTitle), findsOneWidget);
+    expect(find.byKey(const ValueKey('fake-live-document')), findsOneWidget);
+    expect(camera.opened, hasLength(1));
+    await tester.tap(find.byKey(_shutterButton));
+    await tester.pumpAndSettle();
+
+    // Review: the camera is released.
+    expect(find.text(en.identityReviewBothSides), findsOneWidget);
+    expect(camera.opened.single.shots, 2);
+    expect(camera.opened.single.disposed, isTrue);
+
+    await tester.tap(find.widgetWithText(FilledButton, en.identityReviewContinueCta));
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(FilledButton, en.identityReviewContinueCta));
+    await tester.pumpAndSettle();
+
+    // Selfie: its own (front-camera) session, with the face tips.
+    expect(find.byKey(const ValueKey('fake-live-selfie')), findsOneWidget);
+    expect(find.text(en.identitySelfieTipFrame), findsOneWidget);
+    await _captureSelfie(tester);
+    expect(find.text(en.identityApprovedTitle), findsOneWidget);
+    expect(camera.opened.map((v) => v.target), <IdentityCaptureTarget>[
+      IdentityCaptureTarget.document,
+      IdentityCaptureTarget.selfie,
+    ]);
+    expect(camera.captures, isEmpty, reason: 'the system camera fallback was never needed');
+  });
+
+  testWidgets('when the live camera cannot open, the shutter falls back to the system camera', (tester) async {
+    final en = await _l10n('en');
+    final camera = _FakeLiveCamera(failWith: const IdentityCameraUnavailable(permissionDenied: false));
+    await _open(tester, reservationIdForScenario(DummyVerificationScenario.autoApprove), camera: camera);
+    await _dismissIntro(tester, en);
+
+    expect(find.byKey(const ValueKey('fake-live-document')), findsNothing);
+    expect(find.text(en.identityCaptureTipFrame), findsOneWidget, reason: 'instructions still shown');
+    await tester.tap(find.byKey(_shutterButton));
+    await tester.pumpAndSettle();
+    expect(camera.captures, <IdentityCaptureTarget>[IdentityCaptureTarget.document]);
+    expect(find.text(en.identityReviewDocumentTitle), findsOneWidget);
+  });
+
+  testWidgets('a denied live camera shows the open-settings screen', (tester) async {
+    final en = await _l10n('en');
+    final camera = _FakeLiveCamera(failWith: const IdentityCameraUnavailable(permissionDenied: true));
+    await _open(tester, reservationIdForScenario(DummyVerificationScenario.autoApprove), camera: camera);
+    await _dismissIntro(tester, en);
+
+    expect(find.text(en.identityCameraDeniedTitle), findsOneWidget);
+    expect(find.widgetWithText(FilledButton, en.identityOpenSettingsCta), findsOneWidget);
+  });
 }

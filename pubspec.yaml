@@ -64,6 +64,12 @@ dependencies:
   # `IdentityCamera` so tests never touch a device camera.
   image_picker: ^1.2.3
 
+  # The live viewfinder on iOS/Android: the camera feed is shown INSIDE the
+  # card-shaped capture frame so the guest can line the ID up before the shot
+  # (image_picker's native camera UI has no overlay). Web and any device
+  # where the live camera can't open fall back to image_picker.
+  camera: ^0.12.1
+
   # `IDENTITY_CameraDenied` "فتح الإعدادات" — opens this app's system
   # settings page so the guest can re-enable the camera permission.
   app_settings: ^9.0.0

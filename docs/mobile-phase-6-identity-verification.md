@@ -79,9 +79,16 @@ ABDULRAHMAN). Tokens are paired (distinct) by Jaro-Winkler.
 - **strong** — identical compact form, or ≥ 2 tokens, every typed token
   pairs at **≥ 0.94** and the pairs cover the first given name **and** the
   surname (middle names may be omitted).
-- **weak → review** — ≥ half of typed tokens pair at **≥ 0.88** and the
-  surname does.
-- **mismatch** — anything else.
+- **strong (Egyptian national ID)** — the card's name is a lineage chain
+  (own / father / grandfather / …), so ≥ 3 typed tokens that are, in order,
+  the leading tokens of the printed name (the usual "triple name", last card
+  token omitted) are also strong.
+- **weak → review** — every typed token (≥ 2) is printed on the card but the
+  anchors aren't covered (e.g. first + father name only, or out of order), or
+  ≥ half of typed tokens pair at **≥ 0.88** and the surname does. A name made
+  only of tokens that are on the card is never a hard mismatch.
+- **mismatch** — anything else (e.g. a family / father name that isn't on the
+  card).
 - **Arabic vs Latin** — never transliterated/guessed: `unverifiable_script` →
   review. The form asks for the Latin spelling on passports.
 
@@ -273,7 +280,7 @@ Reservation Detail (must be DEPOSIT_HELD — IdentityVerificationEligibility)
       ▼
 Intro ("Start verification")
       ▼
-Capture document (camera-frame placeholder) → Review document ("Continue" / "Retake")
+Capture document (live card-shaped viewfinder) → Review document ("Continue" / "Retake")
       │  submitDocument
       ▼
 Capture selfie (camera-frame placeholder, submits on capture)
@@ -371,12 +378,19 @@ IdentityVerificationRepository
 `sizeBytes` and `mimeType`, plus the capture's content reference — never
 printed (`toString()` is metadata only):
 
-* **iOS / Android** — `filePath` only. `ImagePickerIdentityCamera`
-  (`data/device/identity_camera.dart`, `image_picker`) opens the platform
-  camera (`ImageSource.camera`, rear for the document, front for the selfie —
-  **camera only, no gallery**, per the Figma "الكاميرا فقط — لا رفع من المعرض").
-  The photo stays in an on-device temp file; no bytes are held in
-  domain/state, and the upload streams it with `MultipartFile.fromFile`.
+* **iOS / Android** — `filePath` only. `DeviceIdentityCamera`
+  (`data/device/live_identity_camera.dart`, `camera` package) shows the live
+  feed **inside the capture frame** — a landscape frame in the ID-1 card
+  ratio (85.6 × 54 mm) with corner guides for the front / back, the portrait
+  face oval for the selfie — with capture tips under it (whole card inside,
+  good light without glare, hold steady). The rear lens is used for the
+  document, the front for the selfie; front and back share one camera session
+  and it is released on review / in the background. If the live camera can't
+  open (not a denial) the shutter falls back to `image_picker`'s system camera
+  (`ImagePickerIdentityCamera`, **camera only, no gallery**); a denied
+  permission shows `IDENTITY_CameraDenied`. The photo is the full sensor frame
+  (not cropped to the guide). It stays in an on-device temp file; no bytes are
+  held in domain/state, and the upload streams it with `MultipartFile.fromFile`.
 * **Web** — `bytes` only. Browsers have no reliable camera source (desktop
   Chrome opens a file chooser either way) and no file system, so the guest
   **picks an image file** (`ImageSource.gallery`), which is read with
@@ -446,9 +460,10 @@ retry + recovery; rejection; Arabic RTL).
 
 ## Known limitations
 
-* The capture screen has no live viewfinder — the shutter opens the platform
-  camera (iOS/Android) or a file chooser (web). On the web this means a guest
+* On the web the shutter opens a file chooser (no live viewfinder), so a guest
   can upload any image file; the "camera only" rule holds on mobile only.
+* The live photo is not cropped to the card guide — the OCR reads the full
+  frame.
 * On the web, go_router's imperative `pushNamed` doesn't update the URL, so a
   browser refresh mid-flow lands back on the last declarative route.
 * Manual-review resolution (`STAFF_APPROVED` / `STAFF_REJECTED` from

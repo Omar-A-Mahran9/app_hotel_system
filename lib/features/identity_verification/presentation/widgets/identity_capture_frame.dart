@@ -24,6 +24,12 @@ import '../../domain/entities/identity_document.dart';
 /// * the "stored securely" footnote (12, 60% white).
 ///
 /// On the review screen the real captured photo ([preview]) fills the frame.
+///
+/// ID capture uses a landscape frame in the ID-1 card ratio (85.6 × 54 mm)
+/// with corner guides ([IdentityFrameShape.card]); the selfie keeps the
+/// portrait frame with the face oval. When [live] is given (iOS/Android), the
+/// camera feed is shown inside the frame so the card can be lined up before
+/// the shot, and [tips] list what makes a readable photo.
 class IdentityCaptureScreen extends StatelessWidget {
   const IdentityCaptureScreen({
     super.key,
@@ -37,6 +43,9 @@ class IdentityCaptureScreen extends StatelessWidget {
     this.shutterLabel,
     this.preview,
     this.footer,
+    this.shape = IdentityFrameShape.face,
+    this.live,
+    this.tips = const <String>[],
   });
 
   final String title;
@@ -56,9 +65,21 @@ class IdentityCaptureScreen extends StatelessWidget {
   /// Replaces the shutter with an action footer (review screen).
   final Widget? footer;
 
+  final IdentityFrameShape shape;
+
+  /// The live camera feed, laid out inside the frame (capture screens).
+  final Widget? live;
+
+  /// Short capture instructions shown under the frame.
+  final List<String> tips;
+
   static const Color _canvas = AppPrimitives.ink900;
   static const double _frameWidth = 280;
   static const double _frameHeight = 360;
+
+  /// ID-1 card (85.6 × 53.98 mm).
+  static const double _cardRatio = 85.6 / 53.98;
+  static const double _cardMaxWidth = 345;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +97,12 @@ class IdentityCaptureScreen extends StatelessWidget {
               // The frame shrinks on short screens so the shutter + footnote
               // always stay visible.
               final double frameScale =
-                  ((constraints.maxHeight - 420) / _frameHeight).clamp(0.6, 1.0);
+                  ((constraints.maxHeight - 420 - tips.length * 24) / _frameHeight).clamp(0.6, 1.0);
+              final double cardWidth =
+                  (constraints.maxWidth - 48).clamp(200.0, _cardMaxWidth);
+              final Size frame = shape == IdentityFrameShape.card
+                  ? Size(cardWidth, cardWidth / _cardRatio)
+                  : Size(_frameWidth * frameScale, _frameHeight * frameScale);
               return Column(
                 children: <Widget>[
                   Padding(
@@ -114,13 +140,20 @@ class IdentityCaptureScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: shape == IdentityFrameShape.card ? 32 : 20),
                   SizedBox(
-                    width: _frameWidth * frameScale,
-                    height: _frameHeight * frameScale,
-                    child: _CaptureFrame(preview: preview),
+                    width: frame.width,
+                    height: frame.height,
+                    child: _CaptureFrame(preview: preview, shape: shape, live: live),
                   ),
                   const SizedBox(height: 24),
+                  if (tips.isNotEmpty) ...<Widget>[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 32),
+                      child: _Tips(tips: tips),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
                   _HintPill(text: hint),
                   const Spacer(),
                   if (onShutter != null) ...<Widget>[
@@ -204,30 +237,41 @@ class _BackButton extends StatelessWidget {
   }
 }
 
+/// The capture frame's shape: the ID card (landscape, corner guides) or the
+/// selfie (portrait, face oval).
+enum IdentityFrameShape { card, face }
+
 class _CaptureFrame extends StatelessWidget {
-  const _CaptureFrame({required this.preview});
+  const _CaptureFrame({required this.preview, required this.shape, this.live});
 
   final CapturedImage? preview;
+  final IdentityFrameShape shape;
+  final Widget? live;
 
   @override
   Widget build(BuildContext context) {
+    final bool card = shape == IdentityFrameShape.card;
+    final BorderRadius radius = BorderRadius.circular(card ? 16 : 32);
     final Uint8List? bytes = preview?.bytes;
     final String? path = preview?.filePath;
+    final Widget? content = bytes != null
+        ? Image.memory(bytes, fit: BoxFit.cover)
+        : (path != null && !kIsWeb)
+            ? Image.file(File(path), fit: BoxFit.cover)
+            : live;
+
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        if (bytes != null)
-          ClipRRect(
-            borderRadius: BorderRadius.circular(32),
-            child: Image.memory(bytes, fit: BoxFit.cover),
-          )
-        else if (path != null && !kIsWeb)
-          ClipRRect(
-            borderRadius: BorderRadius.circular(32),
-            child: Image.file(File(path), fit: BoxFit.cover),
-          )
-        else
-          // 180×220 of the 280×360 frame, centred.
+        if (content != null)
+          ClipRRect(borderRadius: radius, child: content)
+        else if (card)
+          // Placeholder card silhouette.
+          const Center(
+            child: Icon(AppIcons.identity, size: 64, color: Color(0x59FFFFFF)),
+          ),
+        if (!card && (content == null || live != null))
+          // 180×220 of the 280×360 frame, centred — over the live feed too.
           const FractionallySizedBox(
             widthFactor: 180 / 280,
             heightFactor: 220 / 360,
@@ -239,7 +283,42 @@ class _CaptureFrame extends StatelessWidget {
               ),
             ),
           ),
-        const CustomPaint(painter: _DashedFramePainter()),
+        CustomPaint(painter: card ? const _CornerGuidesPainter() : const _DashedFramePainter()),
+      ],
+    );
+  }
+}
+
+class _Tips extends StatelessWidget {
+  const _Tips({required this.tips});
+
+  final List<String> tips;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle? style = Theme.of(context).textTheme.bodySmall?.copyWith(
+          color: AppPrimitives.white.withValues(alpha: 0.85),
+          fontSize: 13,
+          height: 20 / 13,
+        );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        for (final String tip in tips)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const Padding(
+                  padding: EdgeInsets.only(top: 2),
+                  child: Icon(AppIcons.successOutline, size: 16, color: AppPrimitives.white),
+                ),
+                const SizedBox(width: 8),
+                Expanded(child: Text(tip, style: style)),
+              ],
+            ),
+          ),
       ],
     );
   }
@@ -366,4 +445,53 @@ class _DashedFramePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _DashedFramePainter oldDelegate) => false;
+}
+
+/// A thin outline of the card plus thick white corner brackets — "put the
+/// card's four corners here".
+class _CornerGuidesPainter extends CustomPainter {
+  const _CornerGuidesPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    const double r = 16;
+    final RRect outline = RRect.fromRectAndRadius(
+      Rect.fromLTWH(1, 1, size.width - 2, size.height - 2),
+      const Radius.circular(r - 1),
+    );
+    canvas.drawRRect(
+      outline,
+      Paint()
+        ..color = const Color(0x66FFFFFF)
+        ..strokeWidth = 1
+        ..style = PaintingStyle.stroke,
+    );
+
+    final Paint corner = Paint()
+      ..color = AppPrimitives.white
+      ..strokeWidth = 4
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke;
+    const double arm = 28;
+    final double w = size.width - 2;
+    final double h = size.height - 2;
+    for (final (double x, double y, double dx, double dy) in <(double, double, double, double)>[
+      (2, 2, 1, 1),
+      (w, 2, -1, 1),
+      (2, h, 1, -1),
+      (w, h, -1, -1),
+    ]) {
+      canvas.drawPath(
+        Path()
+          ..moveTo(x, y + dy * arm)
+          ..lineTo(x, y + dy * r)
+          ..arcToPoint(Offset(x + dx * r, y), radius: const Radius.circular(r), clockwise: dx * dy > 0)
+          ..lineTo(x + dx * arm, y),
+        corner,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _CornerGuidesPainter oldDelegate) => false;
 }

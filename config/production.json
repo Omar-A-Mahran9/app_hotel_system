@@ -1,0 +1,5 @@
+{
+  "APP_ENV": "production",
+  "API_BASE_URL": "https://admin.hotel.webstdy.com",
+  "USE_DUMMY_DATA": "false"
+}

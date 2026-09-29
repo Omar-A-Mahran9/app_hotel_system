@@ -2891,7 +2891,7 @@ abstract class AppLocalizations {
   /// No description provided for @identityFullNameArabicHint.
   ///
   /// In en, this message translates to:
-  /// **'As printed in Arabic on the card'**
+  /// **'In Arabic, exactly as printed: first name, then the rest of the name'**
   String get identityFullNameArabicHint;
 
   /// No description provided for @identityBirthDateFromNumber.
@@ -2917,6 +2917,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Turn the card over and fit it inside the frame.'**
   String get identityCaptureBackHint;
+
+  /// No description provided for @identityCaptureTipFrame.
+  ///
+  /// In en, this message translates to:
+  /// **'The whole card inside the frame, all four edges visible'**
+  String get identityCaptureTipFrame;
+
+  /// No description provided for @identityCaptureTipLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Good light, no flash or glare on the card'**
+  String get identityCaptureTipLight;
+
+  /// No description provided for @identityCaptureTipSteady.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold the phone steady over the card so the text is sharp'**
+  String get identityCaptureTipSteady;
+
+  /// No description provided for @identitySelfieTipFrame.
+  ///
+  /// In en, this message translates to:
+  /// **'Your whole face inside the frame, looking at the camera'**
+  String get identitySelfieTipFrame;
+
+  /// No description provided for @identitySelfieTipClear.
+  ///
+  /// In en, this message translates to:
+  /// **'No sunglasses or face covering, in good light'**
+  String get identitySelfieTipClear;
+
+  /// No description provided for @identityCaptureSelfieHintWeb.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a recent, clear photo of your face'**
+  String get identityCaptureSelfieHintWeb;
+
+  /// No description provided for @identityStuckContactReception.
+  ///
+  /// In en, this message translates to:
+  /// **'Can\'t continue? Contact reception'**
+  String get identityStuckContactReception;
 
   /// No description provided for @identitySkipBackCta.
   ///

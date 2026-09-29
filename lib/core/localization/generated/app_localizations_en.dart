@@ -1662,7 +1662,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get identityDocumentStaffCheck => 'Our staff will check this document';
 
   @override
-  String get identityFullNameArabicHint => 'As printed in Arabic on the card';
+  String get identityFullNameArabicHint =>
+      'In Arabic, exactly as printed: first name, then the rest of the name';
 
   @override
   String get identityBirthDateFromNumber =>
@@ -1678,6 +1679,34 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get identityCaptureBackHint =>
       'Turn the card over and fit it inside the frame.';
+
+  @override
+  String get identityCaptureTipFrame =>
+      'The whole card inside the frame, all four edges visible';
+
+  @override
+  String get identityCaptureTipLight =>
+      'Good light, no flash or glare on the card';
+
+  @override
+  String get identityCaptureTipSteady =>
+      'Hold the phone steady over the card so the text is sharp';
+
+  @override
+  String get identitySelfieTipFrame =>
+      'Your whole face inside the frame, looking at the camera';
+
+  @override
+  String get identitySelfieTipClear =>
+      'No sunglasses or face covering, in good light';
+
+  @override
+  String get identityCaptureSelfieHintWeb =>
+      'Choose a recent, clear photo of your face';
+
+  @override
+  String get identityStuckContactReception =>
+      'Can\'t continue? Contact reception';
 
   @override
   String get identitySkipBackCta => 'Skip — front only';

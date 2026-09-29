@@ -26,6 +26,7 @@ import '../../domain/entities/identity_verification_eligibility.dart';
 import '../../domain/entities/identity_verification_session.dart';
 import '../../domain/entities/identity_verification_status.dart';
 import '../../data/device/identity_camera.dart';
+import '../../data/device/live_identity_camera.dart';
 import '../state/identity_verification_controller.dart';
 import '../state/identity_verification_providers.dart';
 import '../widgets/identity_capture_frame.dart';
@@ -97,6 +98,18 @@ class _IdentityVerificationPageState
 
   /// Set when the camera can't be opened (`IDENTITY_CameraDenied`).
   IdentityCameraUnavailable? _cameraProblem;
+
+  /// The live viewfinder per target (front + back of the card share one
+  /// session, so the camera stays open between them).
+  final Map<IdentityCaptureTarget, GlobalKey<IdentityLiveViewfinderState>> _liveKeys =
+      <IdentityCaptureTarget, GlobalKey<IdentityLiveViewfinderState>>{
+    IdentityCaptureTarget.document: GlobalKey<IdentityLiveViewfinderState>(),
+    IdentityCaptureTarget.selfie: GlobalKey<IdentityLiveViewfinderState>(),
+  };
+
+  /// The live camera failed to open (not a denial) — use the one-shot
+  /// system camera instead for the rest of this flow.
+  bool _liveFailed = false;
 
   /// `session.attempts` at the moment the guest tapped "try again" from a
   /// retryable failure screen — while it still matches the live session, the
@@ -463,6 +476,9 @@ class _IdentityVerificationPageState
           onPrimary: () => editDetails(keepPhoto: true),
           secondaryLabel: l10n.identityReviewRetakeCta,
           onSecondary: retake,
+          // Never a dead end: reception can finish the check by hand.
+          linkLabel: l10n.identityStuckContactReception,
+          onLink: contact,
         );
       case DocumentCheckStatus.documentExpired:
         return IdentityInfoScreen(
@@ -505,9 +521,10 @@ class _IdentityVerificationPageState
   }
 
   Future<void> _takePhoto(IdentityCaptureTarget target, {bool back = false}) async {
-    final IdentityCaptureResult result = await ref
-        .read(identityCameraProvider)
-        .capture(target);
+    final IdentityLiveViewfinderState? live = _liveKeys[target]!.currentState;
+    final IdentityCaptureResult result = live != null && live.isReady
+        ? await live.takePicture()
+        : await ref.read(identityCameraProvider).capture(target);
     if (!mounted) return;
     switch (result) {
       case IdentityCaptured(:final CapturedImage image):
@@ -542,6 +559,36 @@ class _IdentityVerificationPageState
   String _selfieHint(AppLocalizations l10n) =>
       kIsWeb ? l10n.identitySelfieFootnoteWeb : l10n.identityCaptureFootnote;
 
+  /// The camera feed inside the frame (iOS/Android), or null to keep the
+  /// one-shot capture (web, tests, or after the live camera failed).
+  Widget? _live(IdentityCaptureTarget target) {
+    final IdentityCamera camera = ref.read(identityCameraProvider);
+    if (_liveFailed || camera is! LiveIdentityCamera || !camera.supportsLiveViewfinder) {
+      return null;
+    }
+    return IdentityLiveViewfinder(
+      key: _liveKeys[target],
+      camera: camera,
+      target: target,
+      onUnavailable: (IdentityCameraUnavailable problem) {
+        if (!mounted) return;
+        setState(() {
+          if (problem.permissionDenied) {
+            _cameraProblem = problem;
+          } else {
+            _liveFailed = true;
+          }
+        });
+      },
+    );
+  }
+
+  List<String> _documentTips(AppLocalizations l10n) => <String>[
+        l10n.identityCaptureTipFrame,
+        l10n.identityCaptureTipLight,
+        l10n.identityCaptureTipSteady,
+      ];
+
   Widget _captureDocument(AppLocalizations l10n) => IdentityCaptureScreen(
     title: l10n.identityCaptureDocumentTitle,
     subtitle: l10n.identityCaptureDocumentHint,
@@ -551,6 +598,9 @@ class _IdentityVerificationPageState
     onBack: () => setState(() => _step = _LocalStep.details),
     shutterLabel: l10n.identityShutterLabel,
     onShutter: () => _takePhoto(IdentityCaptureTarget.document),
+    shape: IdentityFrameShape.card,
+    live: _live(IdentityCaptureTarget.document),
+    tips: _documentTips(l10n),
   );
 
   /// Back of the card — required (Egypt) or optional (Saudi, with skip).
@@ -563,6 +613,9 @@ class _IdentityVerificationPageState
     onBack: _retakeDocument,
     shutterLabel: l10n.identityShutterLabel,
     onShutter: () => _takePhoto(IdentityCaptureTarget.document, back: true),
+    shape: IdentityFrameShape.card,
+    live: _live(IdentityCaptureTarget.document),
+    tips: _documentTips(l10n),
     footer: _backPolicy == BackImagePolicy.optional
         ? BottomActionBar(
             floating: false,
@@ -590,6 +643,7 @@ class _IdentityVerificationPageState
       backTooltip: l10n.commonBack,
       onBack: _retakeDocument,
       preview: image,
+      shape: IdentityFrameShape.card,
       footer: IdentityCaptureFooter(
         primary: PrimaryButton(
           label: l10n.identityReviewContinueCta,
@@ -613,13 +667,15 @@ class _IdentityVerificationPageState
 
   Widget _captureSelfie(AppLocalizations l10n) => IdentityCaptureScreen(
     title: l10n.identityCaptureSelfieTitle,
-    subtitle: l10n.identityCaptureSelfieHint,
+    subtitle: kIsWeb ? l10n.identityCaptureSelfieHintWeb : l10n.identityCaptureSelfieHint,
     hint: _selfieHint(l10n),
     footnote: l10n.identityCaptureFootnoteSecurity,
     backTooltip: l10n.commonBack,
     onBack: _toReservation,
     shutterLabel: l10n.identityShutterLabel,
     onShutter: () => _takePhoto(IdentityCaptureTarget.selfie),
+    live: _live(IdentityCaptureTarget.selfie),
+    tips: <String>[l10n.identitySelfieTipFrame, l10n.identitySelfieTipClear],
   );
 
   Widget _cameraUnavailable(

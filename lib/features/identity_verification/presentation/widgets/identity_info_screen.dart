@@ -14,6 +14,8 @@ class IdentityInfoScreen extends BannerScreen {
     super.primaryLoading,
     super.secondaryLabel,
     super.onSecondary,
+    super.linkLabel,
+    super.onLink,
     super.onClose,
   });
 }

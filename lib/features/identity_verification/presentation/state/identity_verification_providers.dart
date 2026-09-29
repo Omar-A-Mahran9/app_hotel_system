@@ -7,6 +7,7 @@ import '../../data/datasources/api_identity_verification_data_source.dart';
 import '../../data/datasources/dummy_identity_verification_data_source.dart';
 import '../../data/datasources/identity_verification_data_source.dart';
 import '../../data/device/identity_camera.dart';
+import '../../data/device/live_identity_camera.dart';
 import '../../data/repositories/identity_verification_repository_impl.dart';
 import '../../domain/entities/identity_document.dart';
 import '../../domain/entities/identity_verification_session.dart';
@@ -54,8 +55,9 @@ final identityDocumentOptionsProvider =
   }
 });
 
-/// The device camera used to take the ID photo and the selfie. Overridden
-/// with a fake in tests (there is no camera in `flutter test`).
+/// The device camera used to take the ID photo and the selfie — a live
+/// viewfinder where supported ([LiveIdentityCamera]). Overridden with a fake
+/// in tests (there is no camera in `flutter test`).
 final identityCameraProvider = Provider<IdentityCamera>(
-  (Ref ref) => ImagePickerIdentityCamera(),
+  (Ref ref) => DeviceIdentityCamera(),
 );

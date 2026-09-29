@@ -26,6 +26,8 @@ class BannerScreen extends StatelessWidget {
     this.primaryLoading = false,
     this.secondaryLabel,
     this.onSecondary,
+    this.linkLabel,
+    this.onLink,
     this.onClose,
   });
 
@@ -40,6 +42,11 @@ class BannerScreen extends StatelessWidget {
 
   final String? secondaryLabel;
   final VoidCallback? onSecondary;
+
+  /// An optional low-emphasis way out under the banner (e.g. "contact
+  /// reception") when the two actions may not get the guest unstuck.
+  final String? linkLabel;
+  final VoidCallback? onLink;
 
   /// The app bar's ✕. Defaults to popping the route.
   final VoidCallback? onClose;
@@ -73,6 +80,19 @@ class BannerScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               InfoBanner(tone: tone, title: bannerTitle, message: bannerMessage),
+              if (linkLabel != null) ...<Widget>[
+                const SizedBox(height: AppSpacing.space3),
+                Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: TextButton(
+                    onPressed: onLink,
+                    child: Text(
+                      linkLabel!,
+                      style: const TextStyle(decoration: TextDecoration.underline),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ),
         ),

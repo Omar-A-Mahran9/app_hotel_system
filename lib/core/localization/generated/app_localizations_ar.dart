@@ -1658,7 +1658,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get identityDocumentStaffCheck => 'سيراجع موظفونا هذه الوثيقة';
 
   @override
-  String get identityFullNameArabicHint => 'كما هو مطبوع بالعربية في البطاقة';
+  String get identityFullNameArabicHint =>
+      'اكتبه بالعربية كما هو مطبوع: الاسم الأول ثم باقي الاسم';
 
   @override
   String get identityBirthDateFromNumber =>
@@ -1673,6 +1674,33 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get identityCaptureBackHint => 'اقلب البطاقة وضعها داخل الإطار.';
+
+  @override
+  String get identityCaptureTipFrame =>
+      'البطاقة كاملة داخل الإطار وحوافها الأربع ظاهرة';
+
+  @override
+  String get identityCaptureTipLight =>
+      'إضاءة جيدة، بدون فلاش أو انعكاس على البطاقة';
+
+  @override
+  String get identityCaptureTipSteady =>
+      'ثبّت الهاتف فوق البطاقة حتى تظهر الكتابة واضحة';
+
+  @override
+  String get identitySelfieTipFrame =>
+      'وجهك كامل داخل الإطار وانظر مباشرة للكاميرا';
+
+  @override
+  String get identitySelfieTipClear =>
+      'بدون نظارة شمسية أو غطاء للوجه، وفي إضاءة جيدة';
+
+  @override
+  String get identityCaptureSelfieHintWeb => 'اختر صورة حديثة وواضحة لوجهك';
+
+  @override
+  String get identityStuckContactReception =>
+      'لا تستطيع المتابعة؟ تواصل مع الاستقبال';
 
   @override
   String get identitySkipBackCta => 'تخطَّ — الوجه فقط';
